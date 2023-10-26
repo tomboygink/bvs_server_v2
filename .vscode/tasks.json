@@ -22,6 +22,17 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }
+        },
+              {
+			"type": "npm",
+			"script": "build_client",
+			"problemMatcher": [],
+			"label": "npm: build_client",
+			"detail": "компиляция рабочей версии клиента",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
     ]
 }

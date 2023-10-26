@@ -2,5 +2,5 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 export const App = () => {
-  return <div>Worket</div>;
+  return <div style={{ color: "#000" }}>Worket</div>;
 };
