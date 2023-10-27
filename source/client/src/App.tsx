@@ -9,7 +9,7 @@ import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 
 export const App = () => {
-  const { isAuth, isLoading } = useAppSelector(state => state.loginReducer);
+  const { code, isLoading } = useAppSelector(state => state.loginReducer);
 
   useEffect(() => {
     if (getCookie("sess_id")) {
@@ -21,7 +21,7 @@ export const App = () => {
   return (
     <Box>
       {isLoading && <Typography>Загрузка....</Typography>}
-      {document.cookie !== "" ? <AppPage /> : <AuthPage />}
+      {code === null ? <AuthPage /> : <AppPage />}
     </Box>
   );
 };

@@ -13,7 +13,7 @@ export const SignIn =
       console.log(login, password);
       const response = await AuthService.get_UserByAuth(login, password);
       console.log(response.data, "response");
-      //dispatch(loginSlice.actions.loginFetchingSuccess(response.data));
+      dispatch(loginSlice.actions.loginFetchingSuccess(response.data));
     } catch (e: any) {
       dispatch(loginSlice.actions.loginFetchingError("Произошла ошибка"));
     }
