@@ -7,6 +7,10 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "outDir": "../../server/server"
-  }
+    "outDir": "../../server"
+  },
+  "include": [
+    "./**/*",
+    "../xcore/**/*"
+  ]
 }

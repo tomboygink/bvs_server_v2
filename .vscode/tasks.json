@@ -2,37 +2,81 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type":"npm",
-            "script": "build_server",
-            "problemMatcher":[],
-            "label": "npm: build_server",
-            "detail": "Компиляция сервера",
-            "group":{
+            "type": "npm",
+            "script": "build_installer_db",
+            "problemMatcher": [],
+            "label": "npm: build_installer_db",
+            "detail": "Компиляция конфигуратора базы данных",
+            "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "type":"npm",
-            "script": "run_server",
-            "problemMatcher":[],
-            "label": "npm: run_server",
-            "detail": "Запуск сервера",
-            "group":{
+            "type": "npm",
+            "script": "run_installer_db",
+            "problemMatcher": [],
+            "label": "npm: run_installer_db",
+            "detail": "Запуск конфигуратора базы данных",
+            "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
-              {
-			"type": "npm",
-			"script": "build_client",
-			"problemMatcher": [],
-			"label": "npm: build_client",
-			"detail": "компиляция рабочей версии клиента",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
+        {
+            "type": "npm",
+            "script": "build_server",
+            "problemMatcher": [],
+            "label": "npm: build_server",
+            "detail": "Компиляция сервера",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
+            "script": "run_server",
+            "problemMatcher": [],
+            "label": "npm: run_server",
+            "detail": "Запуск сервера",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
+            "script": "build_server_receiver",
+            "problemMatcher": [],
+            "label": "npm: build_server_receiver",
+            "detail": "Компиляция сервера приема-передачи",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
+            "script": "run_server_receiver",
+            "problemMatcher": [],
+            "label": "npm: run_server_receiver",
+            "detail": "Запуск сервера",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
+            "script": "build_client",
+            "problemMatcher": [],
+            "label": "npm: build_client",
+            "detail": "компиляция рабочей версии клиента",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
     ]
 }
