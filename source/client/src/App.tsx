@@ -21,7 +21,9 @@ export const App = () => {
   return (
     <Box>
       {isLoading && <Typography>Загрузка....</Typography>}
-      {code === null ? <AuthPage /> : <AppPage />}
+      {/* {code === null ? <AuthPage /> : <AppPage />} */}
+
+      <AuthPage />
     </Box>
   );
 };
