@@ -1,9 +1,12 @@
 import path from "path"
 import express from "express"
-
 import http from "http"
 import hbs from "hbs"
+import bodyParser from "body-parser"
+
 import config from "../config.json"
+import {router} from './router'
+
 
 class AppServer{
     app:express.Express = null;
@@ -28,11 +31,18 @@ class AppServer{
 
     }
     route(){
+        //Отрисовка шаблонизатора
         this.app.get("/", (req:express.Request, res:express.Response)=>{
             res.render('index.hbs', { title: "Система визуализации СДС" });
         });
-        this.app.post("/api", (req:express.Request, res:express.Response)=>{
-            res.send('{"sess_code":"qwe"}')
+
+        this.app.use(bodyParser.json());
+
+        this.app.post("/api", async(req:express.Request, res:express.Response)=>{
+            
+            console.log("req.metod ", req.method);
+            console.log("req.body", req.body);
+            res.send(await router(req.body));
         });
     }
 
