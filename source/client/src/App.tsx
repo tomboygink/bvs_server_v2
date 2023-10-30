@@ -20,8 +20,10 @@ export const App = () => {
   const dispatch = useAppDispatch();
   return (
     <Box>
-      {isLoading && <Typography>Загрузка....</Typography>}
-      {code === null ? <AuthPage /> : <AppPage />}
+      {isLoading && <Typography>Загрузкаss....</Typography>}
+      {/* {code === null ? <AuthPage /> : <AppPage />} */}
+
+      <AuthPage />
     </Box>
   );
 };
