@@ -53,11 +53,11 @@ var AppServer = (function () {
         this.server = null;
         this.app = (0, express_1.default)();
         this.server = http_1.default.createServer(this.app);
-        this.app.set('view engine', 'hbs');
-        console.log(path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'server', 'views')));
-        this.app.set('views', path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'server', 'views')));
-        hbs_1.default.registerPartials(path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'views', 'partials')));
-        this.app.use('/static', express_1.default.static(path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'server', 'public'))));
+        this.app.set("view engine", "hbs");
+        console.log(path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "server", "views")));
+        this.app.set("views", path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "server", "views")));
+        hbs_1.default.registerPartials(path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "views", "partials")));
+        this.app.use("/static", express_1.default.static(path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "server", "public"))));
     }
     AppServer.prototype.run = function () {
         if (this.app === null)
@@ -65,13 +65,16 @@ var AppServer = (function () {
         if (this.server === null)
             return;
         this.route();
-        this.server.listen(config_json_1.default.config_server.port, function () { console.log("\u0421\u043B\u0443\u0448\u0430\u044E \u043F\u043E\u0440\u0442 ".concat(config_json_1.default.config_server.port)); });
+        this.server.listen(config_json_1.default.config_server.port, function () {
+            console.log("\u0421\u043B\u0443\u0448\u0430\u044E \u043F\u043E\u0440\u0442 ".concat(config_json_1.default.config_server.port));
+        });
     };
     AppServer.prototype.route = function () {
         var _this = this;
         this.app.get("/", function (req, res) {
-            res.render('index.hbs', { title: "Система визуализации СДС" });
+            res.render("index.hbs", { title: "Система визуализации СДС" });
         });
+        this.app.use((0, cors_1.default)());
         this.app.use(body_parser_1.default.json());
         this.app.post("/api", (0, cors_1.default)(), function (req, res) { return __awaiter(_this, void 0, void 0, function () {
             var _a, _b;
