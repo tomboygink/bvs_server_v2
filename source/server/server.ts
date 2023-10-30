@@ -3,6 +3,7 @@ import express from "express"
 import http from "http"
 import hbs from "hbs"
 import bodyParser from "body-parser"
+import cors from "cors"
 
 import config from "../config.json"
 import {router} from './router'
@@ -37,8 +38,9 @@ class AppServer{
         });
 
         this.app.use(bodyParser.json());
+        
 
-        this.app.post("/api", async(req:express.Request, res:express.Response)=>{
+        this.app.post("/api", cors(), async(req:express.Request, res:express.Response)=>{
             
             console.log("req.metod ", req.method);
             console.log("req.body", req.body);
