@@ -44,6 +44,7 @@ var express_1 = __importDefault(require("express"));
 var http_1 = __importDefault(require("http"));
 var hbs_1 = __importDefault(require("hbs"));
 var body_parser_1 = __importDefault(require("body-parser"));
+var cors_1 = __importDefault(require("cors"));
 var config_json_1 = __importDefault(require("../config.json"));
 var router_1 = require("./router");
 var AppServer = (function () {
@@ -72,7 +73,7 @@ var AppServer = (function () {
             res.render('index.hbs', { title: "Система визуализации СДС" });
         });
         this.app.use(body_parser_1.default.json());
-        this.app.post("/api", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+        this.app.post("/api", (0, cors_1.default)(), function (req, res) { return __awaiter(_this, void 0, void 0, function () {
             var _a, _b;
             return __generator(this, function (_c) {
                 switch (_c.label) {
