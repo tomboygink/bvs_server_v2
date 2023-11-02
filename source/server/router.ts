@@ -5,6 +5,11 @@ import { SessionsTable } from '../xcore/dbase/Sessions';
 import { OrgsTable } from '../xcore/dbase/Orgs'
 import { Jobs_titlesTable } from '../xcore/dbase/Jobs_titles'
 import { Devs_groupsTable } from '../xcore/dbase/Devs_groups'
+import { DevsTable } from '../xcore/dbase/Devs';
+import { Dev_povsTable } from '../xcore/dbase/Dev_Povs';
+import { Control_dev_sessTable } from '../xcore/dbase/Control_dev_sess';
+import { Dev_sessTable } from '../xcore/dbase/Dev_sess';
+import { SchemeSvgTable } from '../xcore/dbase/SchemeSvg';
 import { SendMail } from '../xcore/mailer/sendMail'
 
 
@@ -355,18 +360,19 @@ export async function router(body: any) {
             var dg = new Devs_groupsTable(body.args, body.sess_code);
             data = await dg.selectDevsGroups();
             res.cmd = body.cmd;
-                res.code = body.sess_code;
-                res.data = data; // возможно [data]
-                res.error = null;
+            res.code = body.sess_code;
+            res.data = data; // возможно [data]
+            res.error = null;
 
         } break;
         //редактирование группы по id
-   /*     case 'set_ChangeDevsGroups': {
+        case 'set_ChangeDevsGroups': {
             var dg = new Devs_groupsTable(body.args, body.sess_code);
             data = await dg.updateDevsGroups();
-            wsres.code = body.sess_code;
-            wsres.error = null;
-            wsres.data = [];
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = null; // возможно [data]
+            res.error = null;
         } break;
 
         //------------------------------------------------------------------------ДОБАВЛЕНИЕ И ПОЛУЧЕНИЕ УСТРОЙСТВ ПО ГРУППЕ УСТРОЙСТВА
@@ -376,16 +382,16 @@ export async function router(body: any) {
             data = await dev.insertDevs();
             await dev.delete_duplicate();
             if (data === null || data === undefined || data[0].id === 0) {
-                wsres.code = body.sess_code;
-                wsres.data = [];
-                wsres.error = "Ошибка добавления устройства"
+                res.cmd = body.cmd;
+                res.code = body.sess_code;
+                res.data = null;
+                res.error = "Ошибка добавления устройства";
             }
             else {
-                //data = await dev.selectDevs();
-                wsres.code = body.sess_code;
-                //wsres.data = data;
-                wsres.data = [];
-                wsres.error = null;
+                res.cmd = body.cmd;
+                res.code = body.sess_code;
+                res.data = null;
+                res.error = null;
             }
 
         } break;
@@ -397,14 +403,16 @@ export async function router(body: any) {
             var dev_povs = new Dev_povsTable(body.args, body.sess_code);
             data = await dev_povs.insertDev_povs();
             if (data === null || data === undefined || data[0].id === 0) {
-                wsres.code = body.sess_code;
-                wsres.data = [];
-                wsres.error = "Ошибка добавления поверочного интервала"
+                res.cmd = body.cmd;
+                res.code = body.sess_code;
+                res.data = null;
+                res.error = "Ошибка добавления поверочного интервала";
             }
             else {
-                wsres.code = body.sess_code;
-                wsres.data = [];
-                wsres.error = null;
+                res.cmd = body.cmd;
+                res.code = body.sess_code;
+                res.data = null;
+                res.error = null;
             }
 
         } break;
@@ -414,10 +422,10 @@ export async function router(body: any) {
         case 'get_DevPovs': {
             var dev_povs = new Dev_povsTable(body.args, body.sess_code);
             data = await dev_povs.selectDev_povs();
-            wsres.code = body.sess_code;
-            wsres.error = null;
-            wsres.data = data;
-
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = data;
+            res.error = null;
         } break;
 
         //------------------------------------------------------------------------ДОБАВЛЕНИЕ КОНТРОЛЬНОЙ СЕСССИИ 
@@ -425,14 +433,16 @@ export async function router(body: any) {
             var control_dev = new Control_dev_sessTable(body.args, body.sess_code);
             data = await control_dev.insertControl_dev_sess();
             if (data === null || data === undefined || data[0].id === 0) {
-                wsres.code = body.sess_code;
-                wsres.data = [];
-                wsres.error = "Ошибка добавления контрольной сессии"
+                res.cmd = body.cmd;
+                res.code = body.sess_code;
+                res.data = null;
+                res.error = "Ошибка добавления контрольной сессии";
             }
             else {
-                wsres.code = body.sess_code;
-                wsres.data = [body.args.dev_sess_id];
-                wsres.error = null;
+                res.cmd = body.cmd;
+                res.code = body.sess_code;
+                res.data = body.args.dev_sess_id;
+                res.error = null;
             }
         } break;
 
@@ -440,10 +450,10 @@ export async function router(body: any) {
         case 'deleteControlDevSess': {
             var deleteControlDevSess = new Control_dev_sessTable(body.args, body.sess_code);
             deleteControlDevSess.deleteControl_dev_sess();
-            wsres.code = '';
-            wsres.data = [];
-            wsres.error = null;
-
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = null;
+            res.error = null;
         } break;
 
 
@@ -451,9 +461,10 @@ export async function router(body: any) {
         case 'set_ChangeDevs': {
             var dev = new DevsTable(body.args, body.sess_code);
             dev.updateDevs();
-            wsres.error = null;
-            wsres.code = body.sess_code;
-            wsres.data = [];
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = null;
+            res.error = null;
         } break;
 
 
@@ -461,10 +472,10 @@ export async function router(body: any) {
         case 'get_DevFirstLastSessions': {
             var fl_sess = new Dev_sessTable(body.args, body.sess_code);
             data = await fl_sess.selectFirstLastSess();
-            wsres.error = null;
-            wsres.code = body.sess_code;
-            wsres.data = data;
-
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = data;
+            res.error = null;
         } break;
 
 
@@ -474,11 +485,10 @@ export async function router(body: any) {
         case 'get_DevSessions': {
             var dev_sess = new Dev_sessTable(body.args, body.sess_code);
             data = await dev_sess.selectDevSess();
-            wsres.error = null;
-            wsres.code = body.sess_code;
-            //console.log(data);
-            wsres.data = data;
-
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = data;
+            res.error = null;
         } break;
 
 
@@ -486,11 +496,10 @@ export async function router(body: any) {
         case 'set_SchemeSvg': {
             var schemeSvg = new SchemeSvgTable(body.args);
             await schemeSvg.insertSchemeSVG();
-
-            wsres.code = '';
-            wsres.data = [];
-            wsres.error = null;
-
+            res.cmd = body.cmd;
+            res.code = body.sess_code;
+            res.data = null;
+            res.error = null;
         } break;
 
 
@@ -498,8 +507,11 @@ export async function router(body: any) {
         case 'deleteCookie': {
             st = new SessionsTable(body.args);
             st.deleteSess();
-            wsres.code = '';
-            wsres.data = [];
+
+            res.cmd = body.cmd;
+            res.code = '';
+            res.data = null;
+            res.error = null;
         } break;
 
 
@@ -508,8 +520,11 @@ export async function router(body: any) {
 
         //------------------------------------------------------------------------ДРУГИЕ КОДЫ КОТОРЫЕ НЕ ПРОПИСАННЫ
         default: {
-            wsres.error = `Команда "${body.cmd}" не распознана`;
-        } break;*/
+            res.cmd = body.cmd;
+            res.code = null;
+            res.data = null;
+            res.error = `Команда "${body.cmd}" не распознана`;            
+        } break;
 
     }
     return JSON.stringify(res)
