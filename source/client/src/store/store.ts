@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import loginReducer from "./reducers/LoginnSlice";
+import userReducer from "./reducers/UserSlice";
 // import { userAPI } from "../services/UserService";
 import { curryGetDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
 
 const rootReducer = combineReducers({
-  loginReducer
+  userReducer
   // [userAPI.reducerPath]: userAPI.reducer
 });
 

@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import AppPanel from "../components/AppPanel";
 
 AppPage.propTypes = {};
 
 function AppPage() {
   return (
     <div>
-      worket{" "}
+      <AppPanel />
+      worket11{" "}
       {/* <button
         onClick={() => {
           this.onLogOut();

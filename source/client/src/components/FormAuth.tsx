@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
-import { SignIn } from "../store/authStore/AuthStore";
+import { SignIn } from "../store/userStore/UserStore";
 import { useState } from "react";
 import { start } from "repl";
 
@@ -25,7 +25,6 @@ export const FormAuth = () => {
   const [pass, setPassword] = useState<string>("");
 
   const dispatch = useAppDispatch();
-  // const { data } = useAppSelector(state => state.loginReducer);
 
   return (
     <Container component="main" maxWidth="xs">
