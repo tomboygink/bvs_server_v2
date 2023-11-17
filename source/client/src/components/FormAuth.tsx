@@ -1,10 +1,8 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -14,9 +12,9 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
-import { SignIn } from "../store/userStore/UserStore";
+
 import { useState } from "react";
-import { start } from "repl";
+import { signIn } from "../store/authStore/UserStore";
 
 const defaultTheme = createTheme();
 
@@ -67,7 +65,7 @@ export const FormAuth = () => {
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          onClick={() => dispatch(SignIn(log, pass))}
+          onClick={() => dispatch(signIn(log, pass))}
         >
           Войти
         </Button>

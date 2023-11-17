@@ -1,30 +1,34 @@
-import axios from "axios";
-// import { loginSlice } from "../reducers/LoginnSlice";
 import { AppDispatch } from "../store";
-import AuthService from "../services/AuthCreator";
-import { loginSlice } from "../reducers/UserSlice";
-import { string } from "prop-types";
+import UserService from "../services/UserCreator";
+import { UserSlice } from "../reducers/UserSlice";
 
-export const SignIn =
+export const signIn =
   (login: string, password: string) => async (dispatch: AppDispatch) => {
-    dispatch(loginSlice.actions.loginFetching());
+    dispatch(UserSlice.actions.loginFetching());
 
     try {
       console.log(login, password);
-      const response = await AuthService.get_UserByAuth(login, password);
-      console.log(response.data, "response");
-      dispatch(loginSlice.actions.loginFetchingSuccess(response.data));
+      const response = await UserService.get_UserByAuth(login, password);
+      dispatch(UserSlice.actions.loginFetchingSuccess(response.data));
     } catch (e: any) {
-      dispatch(loginSlice.actions.loginFetchingError("Произошла ошибка"));
+      dispatch(UserSlice.actions.loginFetchingError("Произошла ошибка"));
     }
   };
 
 export const checkAuth = (code: string) => async (dispatch: AppDispatch) => {
-  dispatch(loginSlice.actions.checkAuthFetching());
+  dispatch(UserSlice.actions.checkAuthFetching());
   try {
-    const response = await AuthService.get_UserBySessionCode(code);
-    dispatch(loginSlice.actions.checkAuthFetchingSuccess(response.data));
+    const response = await UserService.get_UserBySessionCode(code);
+    dispatch(UserSlice.actions.checkAuthFetchingSuccess(response.data));
   } catch (e: any) {
-    dispatch(loginSlice.actions.checkAuthFetchingError(e));
+    dispatch(UserSlice.actions.checkAuthFetchingError(e));
   }
+};
+
+export const onLogOut = (code: string) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await UserService.onLogOut(code).then(response => {
+      dispatch(UserSlice.actions.logoutFetching());
+    });
+  } catch (e: any) {}
 };

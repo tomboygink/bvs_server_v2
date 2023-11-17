@@ -53,25 +53,11 @@ var AppServer = (function () {
         this.server = null;
         this.app = (0, express_1.default)();
         this.server = http_1.default.createServer(this.app);
-<<<<<<< HEAD
         this.app.set("view engine", "hbs");
         console.log(path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "server", "views")));
         this.app.set("views", path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "server", "views")));
         hbs_1.default.registerPartials(path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "views", "partials")));
         this.app.use("/static", express_1.default.static(path_1.default.normalize(path_1.default.join(__dirname, "..", "..", "server", "public"))));
-=======
-        this.app.set('view engine', 'hbs');
-        console.log(path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'server', 'views')));
-        this.app.set('views', path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'server', 'views')));
-        hbs_1.default.registerPartials(path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'views', 'partials')));
-        this.app.use('/static', express_1.default.static(path_1.default.normalize(path_1.default.join(__dirname, '..', '..', 'server', 'public'))));
-        var options = {
-            origin: ['http://localhost:3040', 'http://127.0.0.1:3040/'],
-            credentials: true
-        };
-        this.app.use((0, cors_1.default)(options));
-        this.app.use(express_1.default.json());
->>>>>>> main
     }
     AppServer.prototype.run = function () {
         if (this.app === null)
@@ -79,13 +65,9 @@ var AppServer = (function () {
         if (this.server === null)
             return;
         this.route();
-<<<<<<< HEAD
         this.server.listen(config_json_1.default.config_server.port, function () {
             console.log("\u0421\u043B\u0443\u0448\u0430\u044E \u043F\u043E\u0440\u0442 ".concat(config_json_1.default.config_server.port));
         });
-=======
-        this.server.listen(config_json_1.default.config_server.port, function () { console.log("\u0421\u0435\u0440\u0432\u0435\u0440 \u0437\u0430\u043F\u0443\u0449\u0435\u043D: http://".concat(config_json_1.default.config_server.host, ":").concat(config_json_1.default.config_server.port, "/")); });
->>>>>>> main
     };
     AppServer.prototype.route = function () {
         var _this = this;
@@ -94,7 +76,7 @@ var AppServer = (function () {
         });
         this.app.use((0, cors_1.default)());
         this.app.use(body_parser_1.default.json());
-        this.app.post("/api", function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+        this.app.post("/api", (0, cors_1.default)(), function (req, res) { return __awaiter(_this, void 0, void 0, function () {
             var _a, _b;
             return __generator(this, function (_c) {
                 switch (_c.label) {

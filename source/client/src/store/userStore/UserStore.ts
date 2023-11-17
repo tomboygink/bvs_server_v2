@@ -25,6 +25,7 @@ export const checkAuth = (code: string) => async (dispatch: AppDispatch) => {
   dispatch(UserSlice.actions.checkAuthFetching());
   try {
     const response = await UserService.get_UserBySessionCode(code);
+
     dispatch(UserSlice.actions.checkAuthFetchingSuccess(response.data));
   } catch (e: any) {
     dispatch(UserSlice.actions.checkAuthFetchingError(e));
@@ -57,8 +58,6 @@ export const changeUserData =
         info,
         code
       );
-      console.log(response, "response");
-      console.log(act_mail, "act_mail");
       console.log(login, surname, name, patronymic, email, phone, info, code);
       dispatch(UserSlice.actions.changeDataFetchingSuccess(response.data));
     } catch (e) {

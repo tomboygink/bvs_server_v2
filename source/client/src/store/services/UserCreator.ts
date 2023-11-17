@@ -64,4 +64,10 @@ export default class userService {
     q.sess_code = sess_id;
     return $api.post<IApiResponse>("/api", { ...q });
   }
+
+  static onLogOut(sess_id: string): Promise<AxiosResponse<IApiResponse>> {
+    var q: IApiRequest = new ApiRequest("deleteCookie");
+    q.args = { sess_id };
+    return $api.post<IApiResponse>("/api", { ...q });
+  }
 }
