@@ -455,26 +455,26 @@ export const SensorIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M6 8L11 16" stroke="#33363F" stroke-linecap="round" />
+      <path d="M6 8L11 16" stroke="#33363F" strokeLinecap="round" />
       <path
         d="M17.7224 20.5C19.2145 17.9157 20 14.9841 20 12C20 9.01588 19.2145 6.08433 17.7224 3.5"
         stroke="#038F54"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M14.3923 18C15.4455 16.1758 16 14.1064 16 12C16 9.89356 15.4455 7.82423 14.3923 6"
         stroke="#038F54"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M10.9282 16C11.6303 14.7838 12 13.4043 12 12C12 10.5957 11.6303 9.21615 10.9282 8"
         stroke="#038F54"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M6.0718 16C5.36965 14.7838 5 13.4043 5 12C5 10.5957 5.36965 9.21615 6.0718 8"
         stroke="#038F54"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -501,10 +501,44 @@ export const LimeUpIcon = () => {
       <path
         d="M17 9L13.9558 13.5662C13.5299 14.2051 12.5728 14.1455 12.2294 13.4587L11.7706 12.5413C11.4272 11.8545 10.4701 11.7949 10.0442 12.4338L7 17"
         stroke="#222222"
-        stroke-width="1.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
+    </svg>
+  );
+};
+
+export const DataIcon = () => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 4.43245C7 4.27684 7 4.19903 6.9491 4.15423C6.89819 4.10944 6.82244 4.11915 6.67094 4.13857C5.54965 4.28229 4.76806 4.57508 4.17157 5.17157C3 6.34315 3 8.22876 3 12C3 15.7712 3 17.6569 4.17157 18.8284C5.34315 20 7.22876 20 11 20H13C16.7712 20 18.6569 20 19.8284 18.8284C21 17.6569 21 15.7712 21 12C21 8.22876 21 6.34315 19.8284 5.17157C19.2319 4.57508 18.4504 4.28229 17.3291 4.13857C17.1776 4.11915 17.1018 4.10944 17.0509 4.15424C17 4.19903 17 4.27684 17 4.43245L17 6.5C17 7.32843 16.3284 8 15.5 8C14.6716 8 14 7.32843 14 6.5L14 4.30005C14 4.15898 14 4.08844 13.9561 4.04451C13.9123 4.00059 13.8418 4.0005 13.7009 4.00031C13.4748 4 13.2412 4 13 4H11C10.7588 4 10.5252 4 10.2991 4.00031C10.1582 4.0005 10.0877 4.00059 10.0439 4.04452C10 4.08844 10 4.15898 10 4.30005L10 6.5C10 7.32843 9.32843 8 8.50001 8C7.67158 8 7 7.32843 7 6.5L7 4.43245Z"
+        fill="#7E869E"
+        fill-opacity="0.25"
+      />
+      <path d="M8.5 2.5L8.5 6.5" stroke="#222222" strokeLinecap="round" />
+      <path d="M15.5 2.5L15.5 6.5" stroke="#222222" strokeLinecap="round" />
+      <circle cx="7.5" cy="10.5" r="0.5" fill="#222222" />
+      <circle cx="10.5" cy="10.5" r="0.5" fill="#222222" />
+      <circle cx="13.5" cy="10.5" r="0.5" fill="#222222" />
+      <circle cx="16.5" cy="10.5" r="0.5" fill="#222222" />
+      <circle cx="7.5" cy="13.5" r="0.5" fill="#222222" />
+      <circle cx="10.5" cy="13.5" r="0.5" fill="#222222" />
+      <circle cx="13.5" cy="13.5" r="0.5" fill="#222222" />
+      <circle cx="16.5" cy="13.5" r="0.5" fill="#222222" />
+      <circle cx="7.5" cy="16.5" r="0.5" fill="#222222" />
+      <circle cx="10.5" cy="16.5" r="0.5" fill="#222222" />
+      <circle cx="13.5" cy="16.5" r="0.5" fill="#222222" />
+      <circle cx="16.5" cy="16.5" r="0.5" fill="#222222" />
     </svg>
   );
 };

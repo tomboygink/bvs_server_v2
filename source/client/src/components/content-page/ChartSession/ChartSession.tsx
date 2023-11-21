@@ -45,7 +45,7 @@ export const ChartSession = () => {
 
   const { firstLastSess, firstSess, lastSess } = useAppSelector(
     state => state.chartReducer
-  ); 
+  );
 
   if (firstLastSess.length) {
     let tick_yaxis = [];

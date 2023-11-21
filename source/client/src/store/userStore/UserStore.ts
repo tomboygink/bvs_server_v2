@@ -11,9 +11,7 @@ export const SignIn =
     dispatch(UserSlice.actions.loginFetching());
 
     try {
-      console.log(login, password);
       const response = await UserService.get_UserByAuth(login, password);
-      console.log(response.data, "response");
       dispatch(UserSlice.actions.loginFetchingSuccess(response.data));
     } catch (e: any) {
       dispatch(UserSlice.actions.loginFetchingError("Произошла ошибка"));
@@ -58,7 +56,6 @@ export const changeUserData =
         info,
         code
       );
-      console.log(login, surname, name, patronymic, email, phone, info, code);
       dispatch(UserSlice.actions.changeDataFetchingSuccess(response.data));
     } catch (e) {
       dispatch(UserSlice.actions.changeDataFetchingError(e));

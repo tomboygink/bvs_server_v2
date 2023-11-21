@@ -10,6 +10,8 @@ import { DevsCard } from "../components/content-page/DevsCard";
 import { DevsChildCard } from "../components/content-page/DevsChildCard";
 import { AddDevs } from "../components/sidebar-right/AddDevs";
 import { AddDevsChild } from "../components/sidebar-right/AddDevsChild";
+import { ContentPageDevChild } from "./ContentPageDevChild";
+import { ContentPageDev } from "./ContentPageDev";
 
 function AppPage() {
   const dispatch = useAppDispatch();
@@ -44,9 +46,10 @@ function AppPage() {
                 </aside>
                 <div className="col-8 content-page">
                   {isActive === "_dev_" ? (
-                    <DevsCard props={...devs_g.childs} />
+                    <ContentPageDev />
                   ) : (
-                    <DevsChildCard props={...devs_g.childs} />
+                    // <DevsChildCard props={...devs_g.childs} />
+                    <ContentPageDevChild />
                   )}
                 </div>
                 <aside className="col-1 sidebar-right">

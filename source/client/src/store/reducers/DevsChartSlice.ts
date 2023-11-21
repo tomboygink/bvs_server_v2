@@ -21,7 +21,6 @@ export const DevsChartSlice = createSlice({
       state.isLoading = true;
     },
     getChartFetchingSuccess(state, action: PayloadAction<IApiResponse>) {
-      console.log("nen");
       let start_sess = JSON.parse(action.payload.data[1].sess_data);
       let end_sess = JSON.parse(action.payload.data[0].sess_data);
 

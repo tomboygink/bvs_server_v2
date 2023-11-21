@@ -31,7 +31,6 @@ export const getDevFirstLastSessions =
         dev_number,
         code
       );
-      console.log(response.data, "response");
       dispatch(DevsChartSlice.actions.getChartFetchingSuccess(response.data));
     } catch (e: any) {
       dispatch(
