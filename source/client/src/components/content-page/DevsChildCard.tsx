@@ -10,11 +10,15 @@ import TableSensors from "./TableSensors";
 import { LimeUpIcon } from "../../assets/icons/icons";
 import { getDevFirstLastSessions } from "../../store/authStore/DevsGrStore";
 import { TopPanel } from "./TopMenu";
+import { SetPeriodSess } from "./SetPeriodSess";
+import CriticalityTable from "./TableCriticality";
+import TableSelectedSession from "./TableSelectedSession";
 
 export const DevsChildCard = (dgrs: any): React.ReactNode => {
   const dispatch = useAppDispatch();
-  const { id_child } = useAppSelector(state => state.devReducer);
+  const { id_child } = useAppSelector(state => state.devSelectedReducer);
   const { code } = useAppSelector(state => state.userReducer);
+  const { top_menu } = useAppSelector(state => state.devSelectedReducer);
 
   let devs = dgrs.props;
   let parent: React.ReactNode[] = new Array();
@@ -73,7 +77,14 @@ export const DevsChildCard = (dgrs: any): React.ReactNode => {
                   Широта - {gr_devs[key].latitude}
                 </Typography>
               </Box>
-              <TableSensors props={gr_devs[key].sensors.s} />
+              {top_menu === "top_menu-1" && (
+                <TableSensors props={gr_devs[key].sensors.s} />
+              )}
+              {top_menu === "top_menu-2" && (
+                <SetPeriodSess number={gr_devs[key].number} code={code} />
+              )}
+              {top_menu === "top_menu-3" && <CriticalityTable />}
+              {top_menu === "top_menu-4" && <TableSelectedSession />}
             </Box>
           </React.Fragment>
         );

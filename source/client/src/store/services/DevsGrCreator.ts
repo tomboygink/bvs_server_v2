@@ -28,4 +28,16 @@ export default class devsGrService {
     q.sess_code = sess_id;
     return $api.post<IApiResponse>("/api", { ...q });
   }
+
+  static get_DevSessions(
+    dev_number: string,
+    sess_period_start: string,
+    sess_period_end: string,
+    sess_id: string
+  ): Promise<AxiosResponse<IApiResponse>> {
+    var q: IApiRequest = new ApiRequest("get_DevSessions");
+    q.args = { dev_number, sess_period_start, sess_period_end };
+    q.sess_code = sess_id;
+    return $api.post<IApiResponse>("/api", { ...q });
+  }
 }

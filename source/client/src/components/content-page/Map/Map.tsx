@@ -28,9 +28,9 @@ interface IProps {
 }
 
 export const MapLefter = () => {
-  console.log("ygtygy");
-  let splArr = 32423423;
-  let splArr1 = 3423423;
+  let splArr = 55.42865;
+
+  let splArr1 = 65.293619;
   return (
     <MapContainer
       key={splArr}

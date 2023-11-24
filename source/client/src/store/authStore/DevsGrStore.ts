@@ -38,6 +38,19 @@ export const getDevFirstLastSessions =
       );
     }
   };
+export const getSelectetSession =
+  (selectedSess: any, forstlastSess: any) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(
+        DevsChartSlice.actions.getSelectedSessFetchingSuccess(selectedSess)
+      );
+      dispatch(
+        DevsChartSlice.actions.getFirsLAstSessFetchingSuccess(forstlastSess)
+      );
+    } catch (e: any) {
+      console.log(e, "e");
+    }
+  };
 
 export const changeTopMenu =
   (item: string) => async (dispatch: AppDispatch) => {

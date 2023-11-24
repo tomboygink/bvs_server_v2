@@ -51,7 +51,21 @@ export const ContentPageDevChild = () => {
           <DevsChildCard props={...devs_g.childs} />
           <ChartSession />
         </Box>
-        <MapLefter />
+        <Box sx={{ height: "400px", width: "100%" }}>
+          <Typography
+            sx={{
+              fontSize: "14px",
+              fontWeight: "bolder",
+              color: "#3c4043",
+              mt: "22px",
+              mb: "24px",
+              textAlign: "left"
+            }}
+          >
+            Устройство на карте
+          </Typography>
+          <MapLefter />
+        </Box>
       </Box>
     );
   }

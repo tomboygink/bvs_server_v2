@@ -15,6 +15,11 @@ import { Box } from "@mui/material";
 import { useAppSelector } from "../../../hooks/redux";
 
 export const ChartSession = () => {
+  const { firstLastSess, firstSess, lastSess, selectedSess } = useAppSelector(
+    state => state.chartReducer
+  );
+
+  console.log(selectedSess, "selectedSess");
   const customizedGroupTick = (props: any) => {
     const { index, x, y, payload } = props;
 
@@ -42,10 +47,6 @@ export const ChartSession = () => {
       </g>
     );
   };
-
-  const { firstLastSess, firstSess, lastSess } = useAppSelector(
-    state => state.chartReducer
-  );
 
   if (firstLastSess.length) {
     let tick_yaxis = [];
@@ -109,7 +110,6 @@ export const ChartSession = () => {
                 tick={{ fill: "#007FFF", fontSize: "12px" }}
                 domain={[-15, 15]}
               />
-
               <YAxis
                 ticks={tick_yaxis}
                 interval={0}
@@ -121,13 +121,11 @@ export const ChartSession = () => {
                 tick={customizedGroupTick}
                 className="yAxis"
               />
-
               {/* <Tooltip content={<CustomTooltip />} /> */}
               <ReferenceLine y={0} stroke="#8B4513" strokeDasharray="4 4" />
               {/*
             // <ReferenceLine className="y7676" x="-15" stroke="red" /> */}
               {/* <Customized component={customizedGroupTick} /> */}
-
               <Line
                 data={lastSess}
                 strokeWidth={"1"}
@@ -142,6 +140,16 @@ export const ChartSession = () => {
                 stroke="#00B394"
                 // label ={CustomizedLabel}
               />
+              {selectedSess.length > 0 && (
+                <Line
+                  data={selectedSess}
+                  strokeWidth={"1"}
+                  dataKey="град."
+                  stroke="red"
+                  // label ={CustomizedLabel}
+                />
+              )}
+
               <CartesianGrid strokeDasharray="3 3" opacity={50} />
             </LineChart>
           </ResponsiveContainer>

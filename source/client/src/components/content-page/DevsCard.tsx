@@ -11,7 +11,7 @@ import MapStations from "./Map/MapStations";
 
 export const DevsCard = (dgrs: any): React.ReactNode => {
   const dispatch = useAppDispatch();
-  const { id_devs } = useAppSelector(state => state.devReducer);
+  const { id_devs } = useAppSelector(state => state.devSelectedReducer);
 
   let devs = dgrs.props;
   let parent: React.ReactNode[] = new Array();

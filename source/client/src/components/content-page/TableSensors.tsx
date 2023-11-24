@@ -146,7 +146,6 @@ export default function TableSensors(sensors: any) {
           width: "100%",
           background: "#F3F6F9",
           p: "12px",
-          mb: "164px",
           borderRadius: "4px",
           border: "1px solid #E5EAF2"
         }}
