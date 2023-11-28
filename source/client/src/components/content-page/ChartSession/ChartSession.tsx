@@ -144,7 +144,7 @@ export const ChartSession = () => {
                 <Line
                   data={selectedSess}
                   strokeWidth={"1"}
-                  dataKey="град."
+                  dataKey="data_th"
                   stroke="red"
                   // label ={CustomizedLabel}
                 />

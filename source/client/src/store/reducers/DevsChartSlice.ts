@@ -92,8 +92,6 @@ export const DevsChartSlice = createSlice({
       state.firstLastSess = data_charts.sort(
         (a: { depth: number }, b: { depth: number }) => a.depth - b.depth
       );
-
-      state.selectedSess = [];
     },
     getSelectedSessFetchingSuccess(state, action: PayloadAction<any>) {
       state.selectedSess = action.payload;

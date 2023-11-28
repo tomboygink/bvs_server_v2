@@ -107,6 +107,8 @@ export default function TableSelectedSession() {
   );
 
   console.log(selectedSess, "selectedSess");
+  console.log(firstSess, "selectedSess");
+  console.log(selectedSess, "selectedSess");
 
   let rows = firstLastSess;
 
@@ -299,7 +301,7 @@ export default function TableSelectedSession() {
                               }}
                             >
                               {" "}
-                              {"" + row.data_s}{" "}
+                              {"" + row.data_th}{" "}
                             </TableCell>
                           </TableRow>
                         ))}

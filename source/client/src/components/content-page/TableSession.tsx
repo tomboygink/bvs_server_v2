@@ -148,7 +148,7 @@ export default function TableSession() {
         if (String(id) === String(data[key].id)) {
           data_sensors.push({
             depth: String(uniqueChars[i].depth),
-            "град.": uniqueChars[i].data
+            data_th: uniqueChars[i].data
           });
         }
       }
@@ -156,7 +156,7 @@ export default function TableSession() {
 
     qw.push({
       depth: 0,
-      "град.": ""
+      data_th: ""
     });
 
     const mergeByProperty = (arrays: any[], property = "depth") => {
