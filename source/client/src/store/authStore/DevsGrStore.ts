@@ -31,12 +31,24 @@ export const getDevFirstLastSessions =
         dev_number,
         code
       );
-      console.log(response.data, "response");
       dispatch(DevsChartSlice.actions.getChartFetchingSuccess(response.data));
     } catch (e: any) {
       dispatch(
         DevsChartSlice.actions.getChartFetchingError("Произошла ошибка")
       );
+    }
+  };
+export const getSelectetSession =
+  (selectedSess: any, forstlastSess: any) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(
+        DevsChartSlice.actions.getSelectedSessFetchingSuccess(selectedSess)
+      );
+      dispatch(
+        DevsChartSlice.actions.getFirsLAstSessFetchingSuccess(forstlastSess)
+      );
+    } catch (e: any) {
+      console.log(e, "e");
     }
   };
 

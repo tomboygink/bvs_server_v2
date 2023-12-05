@@ -13,11 +13,11 @@ const initialState: gr = {
   id_devs: "",
   id_child: "",
   isActive: "",
-  top_menu: ""
+  top_menu: "top_menu-1"
 };
 
 export const DevsGrSelectedSlice = createSlice({
-  name: "dev",
+  name: "devsSelected",
   initialState,
   reducers: {
     selectIdParent(state, action: PayloadAction<any>) {

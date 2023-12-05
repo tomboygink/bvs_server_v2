@@ -10,12 +10,17 @@ import { DevsCard } from "../components/content-page/DevsCard";
 import { DevsChildCard } from "../components/content-page/DevsChildCard";
 import { AddDevs } from "../components/sidebar-right/AddDevs";
 import { AddDevsChild } from "../components/sidebar-right/AddDevsChild";
+import { ContentPageDevChild } from "./ContentPageDevChild";
+import { ContentPageDev } from "./ContentPageDev";
+import { Typography } from "@mui/material";
 
 function AppPage() {
   const dispatch = useAppDispatch();
   const { code, data } = useAppSelector(state => state.userReducer);
   const { isLoading } = useAppSelector(state => state.devsReducer);
-  const { isActive } = useAppSelector(state => state.devReducer);
+  const { isActive } = useAppSelector(state => state.devSelectedReducer);
+
+  console.log(isActive, "isActive");
 
   const data_devs = useAppSelector(state => state.devsReducer.data);
   let devs: any = data_devs;
@@ -43,10 +48,10 @@ function AppPage() {
                   <DevsGroupTree props={...devs_g.childs} />
                 </aside>
                 <div className="col-8 content-page">
-                  {isActive === "_dev_" ? (
-                    <DevsCard props={...devs_g.childs} />
-                  ) : (
-                    <DevsChildCard props={...devs_g.childs} />
+                  {isActive === "_dev_" && <ContentPageDev />}
+                  {isActive === "_child_" && <ContentPageDevChild />}
+                  {isActive === "" && (
+                    <Typography> Ничего не выбрано</Typography>
                   )}
                 </div>
                 <aside className="col-1 sidebar-right">

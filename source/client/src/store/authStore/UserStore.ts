@@ -7,7 +7,6 @@ export const signIn =
     dispatch(UserSlice.actions.loginFetching());
 
     try {
-      console.log(login, password);
       const response = await UserService.get_UserByAuth(login, password);
       dispatch(UserSlice.actions.loginFetchingSuccess(response.data));
     } catch (e: any) {

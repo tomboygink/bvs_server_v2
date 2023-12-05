@@ -10,7 +10,8 @@ const initialState: any = {
   isAuth: false,
   firstLastSess: [],
   firstSess: [],
-  lastSess: []
+  lastSess: [],
+  selectedSess: []
 };
 
 export const DevsChartSlice = createSlice({
@@ -21,7 +22,6 @@ export const DevsChartSlice = createSlice({
       state.isLoading = true;
     },
     getChartFetchingSuccess(state, action: PayloadAction<IApiResponse>) {
-      console.log("nen");
       let start_sess = JSON.parse(action.payload.data[1].sess_data);
       let end_sess = JSON.parse(action.payload.data[0].sess_data);
 
@@ -92,6 +92,12 @@ export const DevsChartSlice = createSlice({
       state.firstLastSess = data_charts.sort(
         (a: { depth: number }, b: { depth: number }) => a.depth - b.depth
       );
+    },
+    getSelectedSessFetchingSuccess(state, action: PayloadAction<any>) {
+      state.selectedSess = action.payload;
+    },
+    getFirsLAstSessFetchingSuccess(state, action: PayloadAction<any>) {
+      state.firstLastSess = action.payload;
     },
     getChartFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;

@@ -11,7 +11,7 @@ import MapStations from "./Map/MapStations";
 
 export const DevsCard = (dgrs: any): React.ReactNode => {
   const dispatch = useAppDispatch();
-  const { id_devs } = useAppSelector(state => state.devReducer);
+  const { id_devs } = useAppSelector(state => state.devSelectedReducer);
 
   let devs = dgrs.props;
   let parent: React.ReactNode[] = new Array();
@@ -23,7 +23,9 @@ export const DevsCard = (dgrs: any): React.ReactNode => {
     let childs: React.ReactNode[] = new Array();
 
     if (gr_childs.length > 0) {
-      childs.push(<DevsCard props={gr_childs} />);
+      childs.push(
+        <DevsCard key={"_card__id_key_" + gr.id} props={gr_childs} />
+      );
     }
 
     /////////////////////////////////////////////////////////////////////////////// Если есть дочерние строки
@@ -40,41 +42,25 @@ export const DevsCard = (dgrs: any): React.ReactNode => {
         <React.Fragment key={"_card_id_key_" + gr.id}>
           <Box
             sx={{
-              pt: "44px",
-              pl: "10%",
-              pr: "10%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start"
+              border: "1px solid #318CE7",
+              borderRadius: "4px",
+              width: "100%",
+              textAlign: "left",
+              p: "4px",
+              mt: "14px"
             }}
           >
-            <Typography
-              sx={{ fontSize: "24px", fontWeight: "bolder", color: "#3c4043" }}
-            >
-              Данные по расположению устройства
+            <Typography sx={{ p: "4px", fontSize: "14px" }}>
+              Место расположения - {gr.g_name}
             </Typography>
-
-            <Box
-              sx={{
-                border: "1px solid #318CE7",
-                borderRadius: "4px",
-                width: "100%",
-                textAlign: "left",
-                p: "4px",
-                mt: "14px"
-              }}
-            >
-              <Typography sx={{ p: "4px", fontSize: "14px" }}>
-                Место расположения - {gr.g_name}
-              </Typography>
-              <Typography sx={{ p: "4px", fontSize: "14px" }}>
-                Долгота - {gr.latitude}
-              </Typography>
-              <Typography sx={{ p: "4px", fontSize: "14px" }}>
-                Широта - {gr.latitude}
-              </Typography>
-            </Box>
-            {/* <Box
+            <Typography sx={{ p: "4px", fontSize: "14px" }}>
+              Долгота - {gr.latitude}
+            </Typography>
+            <Typography sx={{ p: "4px", fontSize: "14px" }}>
+              Широта - {gr.latitude}
+            </Typography>
+          </Box>
+          {/* <Box
               sx={{
                 height: "300px",
                 width: "100%",
@@ -83,8 +69,7 @@ export const DevsCard = (dgrs: any): React.ReactNode => {
               }}
             >
               {/* <MapStations /> */}
-            {/* </Box> */}
-          </Box>
+          {/* </Box> */}
         </React.Fragment>
       );
     }

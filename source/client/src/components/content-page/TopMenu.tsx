@@ -15,8 +15,6 @@ export const TopPanel = () => {
     setAlignment(newAlignment);
     dispatch(changeTopMenu(newAlignment));
   };
-
-  console.log(alignment, "alignment");
   return (
     <Box
       className="top_panel_div"

@@ -106,6 +106,16 @@ html {
     overflow: scroll;
     height: 100vh;
 }
+.wrapper_dev{
+    animation: fadeIn ease-in 1s backwards;
+
+
+@keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+    }
+}
 .container_charts {
     /////////////////////////////////////////////////  Graph
    

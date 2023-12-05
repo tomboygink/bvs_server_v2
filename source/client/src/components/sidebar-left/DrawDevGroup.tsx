@@ -22,11 +22,20 @@ export const DrawDevGroup = (dgrs: any): React.ReactNode => {
     let childs: React.ReactNode[] = new Array();
 
     if (gr_childs.length > 0) {
-      childs.push(<DrawDevGroup props={gr_childs} />);
+      childs.push(
+        <DrawDevGroup key={"_gr_id_key_" + gr.id} props={gr_childs} />
+      );
     }
 
     if (gr_devs.length > 0) {
-      for (var dii in gr_devs) childs.push(<DrawDevItems {...gr_devs[dii]} />);
+      for (var dii in gr_devs) {
+        childs.push(
+          <DrawDevItems
+            key={"_gr_id_key_child" + gr_devs[dii].id}
+            {...gr_devs[dii]}
+          />
+        );
+      }
     }
 
     gr_array.push(gr);
