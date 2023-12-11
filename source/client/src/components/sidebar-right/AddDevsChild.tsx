@@ -7,6 +7,9 @@ import Loading from "../Loading";
 import { Box } from "@mui/system";
 import { Divider, Typography } from "@mui/material";
 import { EditIcon, ExelIcon, SchemeIcon } from "../../assets/icons/icons";
+import ChangeDevChild from "./child-dialogs/ChangeDevChild";
+import MoveDevChild from "./child-dialogs/MoveDevChild";
+import SetDevChildPovs from "./child-dialogs/SetDevChildPovs";
 
 export const AddDevsChild = () => {
   const dispatch = useAppDispatch();
@@ -23,144 +26,19 @@ export const AddDevsChild = () => {
         mr: "14px"
       }}
     >
-      <Box>
-        <Typography sx={{ fontSize: "12px", textAlign: "left", p: "2px" }}>
-          Редактировать
-        </Typography>
+      <Box sx={{ display: "flex", flexWrap: "wrap", flexDirection: "column" }}>
+        <ChangeDevChild />
 
-        <Typography
-          sx={{ fontSize: "12px", mt: "12px", textAlign: "left", p: "2px" }}
-        >
-          Переместить
-        </Typography>
+        <MoveDevChild />
 
-        <Typography
-          sx={{
-            fontSize: "12px",
-            mt: "12px",
-            textAlign: "left",
-            pl: "18px",
-            borderLeft: "2px solid #318CE7",
-            color: "#318CE7",
-            fontWeight: "bold"
-          }}
-        >
-          Поверочный интервал
-        </Typography>
+        <SetDevChildPovs />
         <Typography
           sx={{ fontSize: "12px", mt: "12px", textAlign: "left", p: "2px" }}
         >
           Установить контрольную сессию
         </Typography>
       </Box>
-      <Divider
-        sx={{
-          mt: "12px",
-          mb: "62px",
-          color: "#808080",
-          width: "85%",
-          borderColor: "#808080"
-        }}
-      />
-      <Box
-        sx={{
-          p: "4px",
-          border: "1px solid #0D80D8",
-          borderRadius: "4px",
-          background: "#F7FBFF",
-          display: "flex",
-          justifyItems: "center",
-          alignItems: "center"
-        }}
-      >
-        <ExelIcon />
-        <Typography
-          sx={{
-            fontSize: "14px",
-            textAlign: "left",
-            p: "2px",
-            color: "#0D80D8"
-          }}
-        >
-          Сессии за период
-        </Typography>{" "}
-      </Box>
 
-      <Box
-        sx={{
-          p: "4px",
-          border: "1px solid #0D80D8",
-          borderRadius: "4px",
-          background: "#F7FBFF",
-          display: "flex",
-          justifyItems: "center",
-          alignItems: "center",
-          mt: "15px"
-        }}
-      >
-        <SchemeIcon />
-        <Typography
-          sx={{
-            fontSize: "14px",
-            textAlign: "left",
-            p: "2px",
-            color: "#0D80D8"
-          }}
-        >
-          Контроль критичности отклонений
-        </Typography>{" "}
-      </Box>
-
-      <Box
-        sx={{
-          p: "4px",
-          border: "1px solid #0D80D8",
-          borderRadius: "4px",
-          background: "#F7FBFF",
-          display: "flex",
-          justifyItems: "center",
-          alignItems: "center",
-          mt: "15px"
-        }}
-      >
-        <SchemeIcon />
-        <Typography
-          sx={{
-            fontSize: "14px",
-            textAlign: "left",
-            p: "2px",
-            color: "#0D80D8"
-          }}
-        >
-          Выбранная сессия
-        </Typography>{" "}
-      </Box>
-
-      <Box
-        sx={{
-          p: "4px",
-          border: "1px solid #0D80D8",
-          borderRadius: "4px",
-          background: "#F7FBFF",
-          display: "flex",
-          justifyItems: "center",
-          alignItems: "center",
-          mt: "15px"
-        }}
-      >
-        <SchemeIcon />
-        <Typography
-          sx={{
-            fontSize: "14px",
-            textAlign: "left",
-            p: "2px",
-            color: "#318CE7",
-            fontWeight: "bold"
-          }}
-        >
-          Устройство
-        </Typography>{" "}
-      </Box>
       <Box></Box>
     </Box>
   );

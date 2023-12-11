@@ -20,7 +20,7 @@ export const setDevSess =
         period_end,
         code
       );
-      console.log(response, "response");
+
       dispatch(
         DevSessionSlice.actions.getDevsSessFetchingSuccess(response.data)
       );

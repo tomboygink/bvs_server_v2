@@ -103,8 +103,6 @@ function createData(name: string, calories: number, fat: number) {
 }
 
 export default function TableSensors(sensors: any) {
-  console.log(sensors, "sensors");
-
   const rows = sensors.props;
 
   const [page, setPage] = React.useState(0);

@@ -106,10 +106,6 @@ export default function TableSelectedSession() {
     state => state.chartReducer
   );
 
-  console.log(selectedSess, "selectedSess");
-  console.log(firstSess, "selectedSess");
-  console.log(selectedSess, "selectedSess");
-
   let rows = firstLastSess;
 
   let raznitca;

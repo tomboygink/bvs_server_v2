@@ -11,7 +11,7 @@ const initialState: any = {
   firstLastSess: [],
   firstSess: [],
   lastSess: [],
-  selectedSess: []
+  selectedSess: [],
 };
 
 export const DevsChartSlice = createSlice({
