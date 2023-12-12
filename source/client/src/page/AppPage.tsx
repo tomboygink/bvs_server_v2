@@ -20,8 +20,6 @@ function AppPage() {
   const { isLoading } = useAppSelector(state => state.devsReducer);
   const { isActive } = useAppSelector(state => state.devSelectedReducer);
 
-  console.log(isActive, "isActive");
-
   const data_devs = useAppSelector(state => state.devsReducer.data);
   let devs: any = data_devs;
   let devs_g;

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { TreeView } from "@mui/x-tree-view/TreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { Box, Paper, Typography } from "@mui/material";
-import { TDGroup, TDevsGroup } from "../../models/IDev";
+import { SENSORS_LIST, TDGroup, TDevsGroup } from "../../models/IDev";
 import { ChartSession } from "./ChartSession/ChartSession";
 import TableSensors from "./TableSensors";
 import { LimeUpIcon } from "../../assets/icons/icons";
-import { getDevFirstLastSessions } from "../../store/authStore/DevsGrStore";
+import {
+  getDevFirstLastSessions,
+  getDevice
+} from "../../store/authStore/DevsGrStore";
 import { TopPanel } from "./TopMenu";
 import { SetPeriodSess } from "./SetPeriodSess";
 import CriticalityTable from "./TableCriticality";
@@ -16,6 +19,20 @@ import TableSelectedSession from "./TableSelectedSession";
 
 export const DevsChildCard = (dgrs: any): React.ReactNode => {
   const dispatch = useAppDispatch();
+  const [device, setDevice] = useState({
+    id: 0,
+    group_dev_id: 0,
+    number: "",
+    name: "",
+    latitude: "0.0",
+    longitude: "0.0",
+    sensors: SENSORS_LIST,
+    info: "",
+    time: "",
+    deleted: false,
+    period_sess: 0
+  });
+
   const { id_child } = useAppSelector(state => state.devSelectedReducer);
   const { code } = useAppSelector(state => state.userReducer);
   const { top_menu } = useAppSelector(state => state.devSelectedReducer);
@@ -39,6 +56,7 @@ export const DevsChildCard = (dgrs: any): React.ReactNode => {
     for (var key in gr_devs) {
       if ("_dev_id_key_" + gr_devs[key].id === id_child) {
         setTimeout(() => {
+          dispatch(getDevice(gr_devs[key]));
           dispatch(getDevFirstLastSessions(gr_devs[key].number, code));
         }, 1000);
 

@@ -19,7 +19,6 @@ export const ChartSession = () => {
     state => state.chartReducer
   );
 
-  console.log(selectedSess, "selectedSess");
   const customizedGroupTick = (props: any) => {
     const { index, x, y, payload } = props;
 

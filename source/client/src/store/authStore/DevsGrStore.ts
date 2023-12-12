@@ -1,7 +1,7 @@
 import { AppDispatch } from "../store";
 import { DevsGrSlice } from "../reducers/DevsGrSlice";
 import DevsGrCreator from "../services/DevsGrCreator";
-import { TDGroup } from "../../models/IDev";
+import { TDGroup, TDevice } from "../../models/IDev";
 import { DevsGrSelectedSlice } from "../reducers/DevsGrSelectedSlice";
 import { DevsChartSlice } from "../reducers/DevsChartSlice";
 
@@ -38,6 +38,7 @@ export const getDevFirstLastSessions =
       );
     }
   };
+
 export const getSelectetSession =
   (selectedSess: any, forstlastSess: any) => async (dispatch: AppDispatch) => {
     try {
@@ -51,6 +52,14 @@ export const getSelectetSession =
       console.log(e, "e");
     }
   };
+
+export const getDevice = (data: any) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(DevsGrSelectedSlice.actions.selectDevice(data));
+  } catch (e: any) {
+    console.log(e, "e");
+  }
+};
 
 export const changeTopMenu =
   (item: string) => async (dispatch: AppDispatch) => {
