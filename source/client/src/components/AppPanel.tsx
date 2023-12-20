@@ -21,6 +21,8 @@ import ChangePass from "./Dialogs/ChangePass";
 import { onLogOut } from "../store/authStore/UserStore";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { MenuSvg, UserSvg } from "../assets/icons/icons";
+import { render } from "react-dom";
+
 
 function AppPanel() {
   const { code } = useAppSelector(state => state.userReducer); //// Значения из стора
@@ -29,13 +31,29 @@ function AppPanel() {
     null
   );
 
+  const [anchorElAdmin, setAnchorElAdmin] = React.useState<null | HTMLElement>(
+    null
+  );
+
+  // открытие меню пользователя 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
-
+  // закрытие меню пользователя 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
+  // открытие меню админа 
+  const handleOpenAdminMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElAdmin(event.currentTarget);
+  };
+  // закрытие меню админа 
+  const handleCloseAdminMenu = () => {
+    setAnchorElAdmin(null);
+  };
+
 
   const dispatch = useAppDispatch();
 
@@ -50,13 +68,49 @@ function AppPanel() {
         pl: "12px"
       }}
     >
+      {/* Меню администратора */}
       <Toolbar disableGutters>
         <Box
           sx={{ flexGrow: 1, display: "flex", justifyContent: "flex-start" }}
         >
-          <MenuSvg />
+          <Tooltip title="Меню администратора">
+            <IconButton onClick={handleOpenAdminMenu}>
+              <MenuSvg />
+            </IconButton>
+          </Tooltip>
+
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-admin-appbar"
+            anchorEl={anchorElAdmin}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right"
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right"
+            }}
+            open={Boolean(anchorElAdmin)}
+            onClose={handleCloseAdminMenu}
+          >
+
+            <MenuItem>Устройства</MenuItem>
+            <MenuItem onClick={() => console.log("Пользователи")}>
+              Пользователи
+            </MenuItem>
+            <MenuItem onClick={()=>{console.log("Организации");}}> 
+              Организации
+            </MenuItem>
+            <MenuItem onClick={() => console.log("Должности")}>
+              Должности
+            </MenuItem>
+          </Menu>
         </Box>
 
+
+        {/* Меню юзера */}
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Настройки профиля">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -67,7 +121,6 @@ function AppPanel() {
               </Typography>
             </IconButton>
           </Tooltip>
-
           <Menu
             sx={{ mt: "45px" }}
             id="menu-appbar"
