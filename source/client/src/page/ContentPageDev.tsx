@@ -42,7 +42,7 @@ export const ContentPageDev = () => {
             mb: "12px"
           }}
         >
-          Данные по расположению устройства
+          Данные по местоположению 
         </Typography>
 
         <Box sx={{ pt: "14px", width: "100%" }}>
