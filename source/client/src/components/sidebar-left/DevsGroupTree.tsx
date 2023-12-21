@@ -31,7 +31,8 @@ export const DevsGroupTree = (dgrs: any) => {
       onNodeSelect={handleChange}
       sx={{ flexGrow: 1, maxWidth: 400, overflow: "auto", fontSize: "14px" }}
     >
-      <DrawDevGroup props={...dgrs.props} />
+      {/* <DrawDevGroup props={...dgrs.props} /> */}
+      <DrawDevGroup props={{...dgrs.props}} />
     </TreeView>
   );
 };

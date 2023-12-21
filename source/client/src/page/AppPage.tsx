@@ -16,11 +16,11 @@ import { Typography } from "@mui/material";
 
 function AppPage() {
   const dispatch = useAppDispatch();
-  const { code, data } = useAppSelector(state => state.userReducer);
-  const { isLoading } = useAppSelector(state => state.devsReducer);
-  const { isActive } = useAppSelector(state => state.devSelectedReducer);
+  const { code, data } = useAppSelector((state) => state.userReducer);
+  const { isLoading } = useAppSelector((state) => state.devsReducer);
+  const { isActive } = useAppSelector((state) => state.devSelectedReducer);
 
-  const data_devs = useAppSelector(state => state.devsReducer.data);
+  const data_devs = useAppSelector((state) => state.devsReducer.data);
   let devs: any = data_devs;
   let devs_g;
 
@@ -43,7 +43,8 @@ function AppPage() {
             <div className="wrapper">
               <div className="row">
                 <aside className="col-3 sidebar-left">
-                  <DevsGroupTree props={...devs_g.childs} />
+                  {/* <DevsGroupTree props={...devs_g.childs} /> */}
+                  <DevsGroupTree props={{ ...devs_g.childs }} />
                 </aside>
                 <div className="col-8 content-page">
                   {isActive === "_dev_" && <ContentPageDev />}
@@ -52,6 +53,7 @@ function AppPage() {
                     <Typography> Ничего не выбрано</Typography>
                   )}
                 </div>
+                {/* <AddDevs /> */}
                 <aside className="col-1 sidebar-right">
                   <AddDevsChild />
                 </aside>

@@ -16,7 +16,7 @@ import {
   Select,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import { AntSwitch } from "../../../assets/icons/icons";
 
@@ -57,154 +57,155 @@ export default function ChangeDevChild() {
         PaperProps={{
           sx: {
             width: "100%",
-            maxHeight: "100%"
-          }
+            maxHeight: "100%",
+          },
         }}
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle>{"Редактировать устройство"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            <TextField
-              sx={{ mt: "14px" }}
-              inputProps={{ style: { fontSize: 12 } }}
-              InputLabelProps={{ style: { fontSize: 12 } }}
-              // error={APP_STORAGE.devs.getNumberError()}
-              // helperText={APP_STORAGE.devs.getNumberError_mess()}
-              variant="outlined"
-              fullWidth
-              required
-              label="Номер устройства"
-              autoComplete="Номер устройства"
-              autoFocus
-              size="small"
-              // onChange={e => {
-              //   APP_STORAGE.devs.setNumber(e.target.value);
-              // }}
-              //value={APP_STORAGE.devs.getNumber()}
-            />
+          {/* С компонентом DialogContentText падают ошибки в консоли, временно закомментировано}
+          {/* <DialogContentText id="alert-dialog-slide-description"> */}
+          <TextField
+            sx={{ mt: "14px" }}
+            inputProps={{ style: { fontSize: 12 } }}
+            InputLabelProps={{ style: { fontSize: 12 } }}
+            // error={APP_STORAGE.devs.getNumberError()}
+            // helperText={APP_STORAGE.devs.getNumberError_mess()}
+            variant="outlined"
+            fullWidth
+            required
+            label="Номер устройства"
+            autoComplete="Номер устройства"
+            autoFocus
+            size="small"
+            // onChange={e => {
+            //   APP_STORAGE.devs.setNumber(e.target.value);
+            // }}
+            //value={APP_STORAGE.devs.getNumber()}
+          />
 
-            <TextField
-              sx={{ mt: "14px" }}
-              inputProps={{ style: { fontSize: 12 } }}
-              InputLabelProps={{ style: { fontSize: 12 } }}
-              // error={APP_STORAGE.devs.getNumberError()}
-              // helperText={APP_STORAGE.devs.getNumberError_mess()}
-              variant="outlined"
-              fullWidth
-              required
-              label="Название устройства"
-              autoComplete="Название устройства"
-              autoFocus
-              size="small"
-              // onChange={e => {
-              //   APP_STORAGE.devs.setNumber(e.target.value);
-              // }}
-              //value={APP_STORAGE.devs.getNumber()}
-            />
+          <TextField
+            sx={{ mt: "14px" }}
+            inputProps={{ style: { fontSize: 12 } }}
+            InputLabelProps={{ style: { fontSize: 12 } }}
+            // error={APP_STORAGE.devs.getNumberError()}
+            // helperText={APP_STORAGE.devs.getNumberError_mess()}
+            variant="outlined"
+            fullWidth
+            required
+            label="Название устройства"
+            autoComplete="Название устройства"
+            autoFocus
+            size="small"
+            // onChange={e => {
+            //   APP_STORAGE.devs.setNumber(e.target.value);
+            // }}
+            //value={APP_STORAGE.devs.getNumber()}
+          />
 
-            <TextField
-              sx={{ mt: "14px" }}
-              inputProps={{ style: { fontSize: 12 } }}
-              InputLabelProps={{ style: { fontSize: 12 } }}
-              // error={APP_STORAGE.devs.getNumberError()}
-              // helperText={APP_STORAGE.devs.getNumberError_mess()}
-              variant="outlined"
-              fullWidth
-              required
-              label="Долгота"
-              autoComplete="Долгота"
-              autoFocus
-              size="small"
-              // onChange={e => {
-              //   APP_STORAGE.devs.setNumber(e.target.value);
-              // }}
-              //value={APP_STORAGE.devs.getNumber()}
-            />
+          <TextField
+            sx={{ mt: "14px" }}
+            inputProps={{ style: { fontSize: 12 } }}
+            InputLabelProps={{ style: { fontSize: 12 } }}
+            // error={APP_STORAGE.devs.getNumberError()}
+            // helperText={APP_STORAGE.devs.getNumberError_mess()}
+            variant="outlined"
+            fullWidth
+            required
+            label="Долгота"
+            autoComplete="Долгота"
+            autoFocus
+            size="small"
+            // onChange={e => {
+            //   APP_STORAGE.devs.setNumber(e.target.value);
+            // }}
+            //value={APP_STORAGE.devs.getNumber()}
+          />
 
-            <TextField
-              sx={{ mt: "14px" }}
-              inputProps={{ style: { fontSize: 12 } }}
-              InputLabelProps={{ style: { fontSize: 12 } }}
-              // error={APP_STORAGE.devs.getNumberError()}
-              // helperText={APP_STORAGE.devs.getNumberError_mess()}
-              variant="outlined"
-              fullWidth
-              required
-              label="Широта"
-              autoComplete="Широта"
-              autoFocus
-              size="small"
-              // onChange={e => {
-              //   APP_STORAGE.devs.setNumber(e.target.value);
-              // }}
-              //value={APP_STORAGE.devs.getNumber()}
-            />
+          <TextField
+            sx={{ mt: "14px" }}
+            inputProps={{ style: { fontSize: 12 } }}
+            InputLabelProps={{ style: { fontSize: 12 } }}
+            // error={APP_STORAGE.devs.getNumberError()}
+            // helperText={APP_STORAGE.devs.getNumberError_mess()}
+            variant="outlined"
+            fullWidth
+            required
+            label="Широта"
+            autoComplete="Широта"
+            autoFocus
+            size="small"
+            // onChange={e => {
+            //   APP_STORAGE.devs.setNumber(e.target.value);
+            // }}
+            //value={APP_STORAGE.devs.getNumber()}
+          />
 
-            <TextField
-              sx={{ mt: "14px" }}
-              inputProps={{ style: { fontSize: 12 } }}
-              InputLabelProps={{ style: { fontSize: 12 } }}
-              // error={APP_STORAGE.devs.getNumberError()}
-              // helperText={APP_STORAGE.devs.getNumberError_mess()}
-              variant="outlined"
-              fullWidth
-              required
-              label="Информация"
-              autoComplete="Информация"
-              autoFocus
-              size="small"
-              // onChange={e => {
-              //   APP_STORAGE.devs.setNumber(e.target.value);
-              // }}
-              //value={APP_STORAGE.devs.getNumber()}
-            />
+          <TextField
+            sx={{ mt: "14px" }}
+            inputProps={{ style: { fontSize: 12 } }}
+            InputLabelProps={{ style: { fontSize: 12 } }}
+            // error={APP_STORAGE.devs.getNumberError()}
+            // helperText={APP_STORAGE.devs.getNumberError_mess()}
+            variant="outlined"
+            fullWidth
+            required
+            label="Информация"
+            autoComplete="Информация"
+            autoFocus
+            size="small"
+            // onChange={e => {
+            //   APP_STORAGE.devs.setNumber(e.target.value);
+            // }}
+            //value={APP_STORAGE.devs.getNumber()}
+          />
 
-            <FormGroup sx={{ mt: "12px" }}>
-              <Stack direction="row" spacing={1} alignItems="center">
-                <Typography
-                  sx={{ ml: "12px", fontSize: "12px", color: "#266bf1" }}
-                >
-                  Заблокировать -{" "}
-                </Typography>
-                <AntSwitch
-                // checked={APP_STORAGE.devs.getCheckboxEd()}
-                // onChange={editing => {
-                //   this.ChekedForEdit(editing);
-                // }}
-                />
-              </Stack>
-            </FormGroup>
-
-            <FormControl fullWidth size="small" sx={{ mt: "14px" }}>
-              <InputLabel className="org" sx={{ fontSize: "12px" }}>
-                Период сессии
-              </InputLabel>
-
-              <Select
-                // value={APP_STORAGE.devs.getPeriodSess()}
-                sx={{ fontSize: "12px" }}
-                label="Период сессии"
-                // onChange={e => {
-                //   this.SelectedPeriodSess(e.target.value);
-                // }}
+          <FormGroup sx={{ mt: "12px" }}>
+            <Stack direction="row" spacing={1} alignItems="center">
+              <Typography
+                sx={{ ml: "12px", fontSize: "12px", color: "#266bf1" }}
               >
-                <MenuItem key="4_sess" sx={{ fontSize: "12px" }} value="1">
-                  Один раз в день
-                </MenuItem>
-                <MenuItem key="3_sess" sx={{ fontSize: "12px" }} value="7">
-                  Один раз в неделю
-                </MenuItem>
-                <MenuItem key="2_sess" sx={{ fontSize: "12px" }} value="14">
-                  Каждые две недели
-                </MenuItem>
-                <MenuItem key="1_sess" sx={{ fontSize: "12px" }} value="31">
-                  Один раз в месяц
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </DialogContentText>
+                Заблокировать -{" "}
+              </Typography>
+              <AntSwitch
+              // checked={APP_STORAGE.devs.getCheckboxEd()}
+              // onChange={editing => {
+              //   this.ChekedForEdit(editing);
+              // }}
+              />
+            </Stack>
+          </FormGroup>
+
+          <FormControl fullWidth size="small" sx={{ mt: "14px" }}>
+            <InputLabel className="org" sx={{ fontSize: "12px" }}>
+              Период сессии
+            </InputLabel>
+
+            <Select
+              // value={APP_STORAGE.devs.getPeriodSess()}
+              sx={{ fontSize: "12px" }}
+              label="Период сессии"
+              // onChange={e => {
+              //   this.SelectedPeriodSess(e.target.value);
+              // }}
+            >
+              <MenuItem key="4_sess" sx={{ fontSize: "12px" }} value="1">
+                Один раз в день
+              </MenuItem>
+              <MenuItem key="3_sess" sx={{ fontSize: "12px" }} value="7">
+                Один раз в неделю
+              </MenuItem>
+              <MenuItem key="2_sess" sx={{ fontSize: "12px" }} value="14">
+                Каждые две недели
+              </MenuItem>
+              <MenuItem key="1_sess" sx={{ fontSize: "12px" }} value="31">
+                Один раз в месяц
+              </MenuItem>
+            </Select>
+          </FormControl>
+          {/* </DialogContentText> */}
         </DialogContent>
         <Divider />
         <DialogActions>

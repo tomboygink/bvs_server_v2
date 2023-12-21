@@ -10,11 +10,12 @@ import { EditIcon, ExelIcon, SchemeIcon } from "../../assets/icons/icons";
 import ChangeDevChild from "./child-dialogs/ChangeDevChild";
 import MoveDevChild from "./child-dialogs/MoveDevChild";
 import SetDevChildPovs from "./child-dialogs/SetDevChildPovs";
+import AddDevChild from "./child-dialogs/AddDevChild";
 
 export const AddDevsChild = () => {
   const dispatch = useAppDispatch();
 
-  const { isLoading, data } = useAppSelector(state => state.devsReducer);
+  const { isLoading, data } = useAppSelector((state) => state.devsReducer);
 
   return (
     <Box
@@ -23,13 +24,15 @@ export const AddDevsChild = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        mr: "14px"
+        mr: "14px",
       }}
     >
       <Box sx={{ display: "flex", flexWrap: "wrap", flexDirection: "column" }}>
         <ChangeDevChild />
 
         <MoveDevChild />
+
+        <AddDevChild />
 
         <SetDevChildPovs />
         <Typography

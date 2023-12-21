@@ -6,7 +6,7 @@ import {
   D_GROUP,
   SENSORS_LIST,
   TDGroup,
-  TDevice
+  TDevice,
 } from "../../models/IDev";
 
 export type gr = {
@@ -21,7 +21,7 @@ const initialState: gr = {
   id_child: "",
   isActive: "",
   top_menu: "top_menu-1",
-  selected_device: []
+  selected_device: [],
 };
 
 export const DevsGrSelectedSlice = createSlice({
@@ -42,8 +42,8 @@ export const DevsGrSelectedSlice = createSlice({
     selectDevice(state, action: PayloadAction<any[]>) {
       console.log(action.payload, "payload");
       state.selected_device = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export default DevsGrSelectedSlice.reducer;

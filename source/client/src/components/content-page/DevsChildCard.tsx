@@ -16,6 +16,7 @@ import { TopPanel } from "./TopMenu";
 import { SetPeriodSess } from "./SetPeriodSess";
 import CriticalityTable from "./TableCriticality";
 import TableSelectedSession from "./TableSelectedSession";
+//ДОработать передачу данных
 
 export const DevsChildCard = (dgrs: any): React.ReactNode => {
   const dispatch = useAppDispatch();

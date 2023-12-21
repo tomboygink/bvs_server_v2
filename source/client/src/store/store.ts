@@ -12,14 +12,14 @@ const rootReducer = combineReducers({
   devsReducer,
   devSelectedReducer,
   chartReducer,
-  DevSessionReduces
+  DevSessionReduces,
 
   // [userAPI.reducerPath]: userAPI.reducer
 });
 
 export const setupStore = () => {
   return configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
     //   middleware: getDefaultMiddleware =>
     //     getDefaultMiddleware().concat(userAPI.middleware)
   });

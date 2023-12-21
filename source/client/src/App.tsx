@@ -8,7 +8,9 @@ import { Box } from "@mui/system";
 import Loading from "./components/Loading";
 
 export const App = () => {
-  const { code, data, isLoading } = useAppSelector(state => state.userReducer);
+  const { code, data, isLoading } = useAppSelector(
+    (state) => state.userReducer
+  );
 
   useEffect(() => {
     if (getCookie("sess_id")) {
