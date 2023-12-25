@@ -1,24 +1,42 @@
-import React, { FC } from "react";
+import React, { FC, ChangeEvent, ReactNode } from "react";
 import { TextField } from "@mui/material";
 
 interface Props {
+  name: string;
   label: string;
-  autoComplete: string;
+  required?: boolean;
+  inputprops: object;
+  isError?: boolean;
+  helperText?: ReactNode;
+  handleChange: (event: ChangeEvent<HTMLElement | HTMLTextAreaElement>) => void;
+  handleBlur?: (event: ChangeEvent<HTMLElement | HTMLTextAreaElement>) => void;
 }
 
-const Input: FC<Props> = ({ label, autoComplete }) => {
+const Input: FC<Props> = ({
+  name,
+  label,
+  required = true,
+  inputprops,
+  isError,
+  helperText,
+  handleChange,
+  handleBlur,
+}) => {
   return (
     <TextField
+      name={name}
       sx={{ mt: "14px" }}
-      inputProps={{ style: { fontSize: 12 } }}
       InputLabelProps={{ style: { fontSize: 12 } }}
       variant="outlined"
       fullWidth
-      required
-      autoFocus
+      required={required}
       size="small"
       label={label}
-      autoComplete={autoComplete}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      inputProps={inputprops}
+      error={isError}
+      helperText={helperText}
     />
   );
 };

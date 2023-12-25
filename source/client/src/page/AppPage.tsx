@@ -13,6 +13,7 @@ import { AddDevsChild } from "../components/sidebar-right/AddDevsChild";
 import { ContentPageDevChild } from "./ContentPageDevChild";
 import { ContentPageDev } from "./ContentPageDev";
 import { Typography } from "@mui/material";
+// import { devsAPI } from "../store/services/DevsApi";
 
 function AppPage() {
   const dispatch = useAppDispatch();
@@ -21,7 +22,14 @@ function AppPage() {
   const { isActive } = useAppSelector((state) => state.devSelectedReducer);
 
   const data_devs = useAppSelector((state) => state.devsReducer.data);
+  // const { data: devs_api } = devsAPI.useFetchAllDevsQuery("");
+
+  // console.log("devs_api=>", devs_api);
+  // console.log("data_devs=>", data_devs);
+  // console.log(Array.isArray(data_devs));
+
   let devs: any = data_devs;
+  // let devs: any = devs_api;
   let devs_g;
 
   const users_w = true;
@@ -63,6 +71,8 @@ function AppPage() {
         </main>
       </Box>
     );
+  } else {
+    return <Loading />;
   }
 }
 

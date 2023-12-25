@@ -4,7 +4,7 @@ import $api from "../../http";
 import {
   ApiRequest,
   IApiRequest,
-  IApiResponse
+  IApiResponse,
 } from "../../models/response/ApiResponse";
 
 export default class devsGrService {

@@ -7,5 +7,5 @@ export const changePassSchema = yup.object({
     .string()
     .min(5)
     .max(14)
-    .required("Поле Повторите старый пароль")
+    .required("Поле Повторите старый пароль"),
 });
