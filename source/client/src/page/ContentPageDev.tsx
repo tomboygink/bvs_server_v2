@@ -8,10 +8,10 @@ import { getDevsGr } from "../store/authStore/DevsGrStore";
 import { DevsCard } from "../components/content-page/DevsCard";
 
 export const ContentPageDev = () => {
-  const { code, data } = useAppSelector(state => state.userReducer);
+  const { code, data } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
 
-  const data_devs = useAppSelector(state => state.devsReducer.data);
+  const data_devs = useAppSelector((state) => state.devsReducer.data);
   let devs: any = data_devs;
   let devs_g;
 
@@ -31,7 +31,7 @@ export const ContentPageDev = () => {
           pr: "10%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start"
+          alignItems: "flex-start",
         }}
       >
         <Typography
@@ -39,15 +39,15 @@ export const ContentPageDev = () => {
             fontSize: "24px",
             fontWeight: "bolder",
             color: "#3c4043",
-            mb: "12px"
+            mb: "12px",
           }}
         >
-          Данные по местоположению 
+          Данные по расположению устройства
         </Typography>
 
         <Box sx={{ pt: "14px", width: "100%" }}>
           {/* <DevsCard props={...devs_g.childs} /> */}
-        <DevsCard props={{...devs_g.childs}} />
+          <DevsCard props={{ ...devs_g.childs }} />
         </Box>
       </Box>
     );

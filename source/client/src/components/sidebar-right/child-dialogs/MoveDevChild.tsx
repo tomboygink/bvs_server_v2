@@ -8,7 +8,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { Divider, TextField } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { AntSwitch } from "../../../assets/icons/icons";
+import { openModal, closeModal } from "../../../utils/functions";
+import Modal from "../../../_shared/Modal/Modal";
+import ButtonLink from "../../../_shared/ButtonLink";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -30,15 +36,26 @@ export default function MoveDevChild() {
     setOpen(false);
   };
 
+  const handleSubmit = () => {
+    console.log("Submited");
+  };
+
   return (
     <React.Fragment>
-      <Button
-        variant="text"
-        onClick={handleClickOpen}
-        sx={{ fontSize: "12px", mt: "12px", textAlign: "left", p: "2px" }}
+      <ButtonLink
+        value="Переместить устройство"
+        onClick={() => openModal(setOpen)}
+      />
+      <Modal
+        open={open}
+        onClose={() => closeModal(setOpen)}
+        title="Переместить устройство"
+        handleSubmit={handleSubmit}
+        isValid
+        className="moveDev"
       >
-        Переместить устройство
-      </Button>
+        <DatePicker label="Controlled picker" />
+      </Modal>
 
       <Dialog
         open={open}
@@ -47,8 +64,8 @@ export default function MoveDevChild() {
         PaperProps={{
           sx: {
             width: "100%",
-            maxHeight: "100%"
-          }
+            maxHeight: "100%",
+          },
         }}
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"

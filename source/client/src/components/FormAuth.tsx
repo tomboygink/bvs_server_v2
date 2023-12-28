@@ -12,7 +12,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
-
 import { useState } from "react";
 import { signIn } from "../store/authStore/UserStore";
 
@@ -31,7 +30,7 @@ export const FormAuth = () => {
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "#1976D2" }}>
@@ -45,7 +44,7 @@ export const FormAuth = () => {
           required
           fullWidth
           label="Введите email"
-          onChange={e => setlogin(e.target.value)}
+          onChange={(e) => setlogin(e.target.value)}
           value={log}
           type="text"
         />
@@ -55,7 +54,7 @@ export const FormAuth = () => {
           required
           fullWidth
           type="password"
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           value={pass}
           label="Введите пароль"
         />

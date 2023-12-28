@@ -11,7 +11,7 @@ import MapStations from "./Map/MapStations";
 
 export const DevsCard = (dgrs: any): React.ReactNode => {
   const dispatch = useAppDispatch();
-  const { id_devs } = useAppSelector(state => state.devSelectedReducer);
+  const { id_devs } = useAppSelector((state) => state.devSelectedReducer);
 
   let devs = dgrs.props;
   let parent: React.ReactNode[] = new Array();
@@ -47,7 +47,7 @@ export const DevsCard = (dgrs: any): React.ReactNode => {
               width: "100%",
               textAlign: "left",
               p: "4px",
-              mt: "14px"
+              mt: "14px",
             }}
           >
             <Typography sx={{ p: "4px", fontSize: "14px" }}>

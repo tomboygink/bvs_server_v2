@@ -6,6 +6,8 @@ import { deleteAllCookies, getCookie } from "./store/browserCookes";
 import AppPage from "./page/AppPage";
 import { Box } from "@mui/system";
 import Loading from "./components/Loading";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export const App = () => {
   const { code, data, isLoading } = useAppSelector(
@@ -22,16 +24,23 @@ export const App = () => {
 
   let ret_dt: React.ReactNode = <></>;
 
+  // if (data !== null && data.length > 0 && document.cookie !== "") {
+  //   ret_dt = <AppPage />;
+  // } else if (data !== null && data.length === 0 && document.cookie === "") {
+  //   ret_dt = <AuthPage />;
+  // }
+
   if (data !== null && data.length > 0 && document.cookie !== "") {
     ret_dt = <AppPage />;
-  } else if (data.length === 0 && document.cookie === "") {
+  } else {
     ret_dt = <AuthPage />;
   }
-
   return (
-    <Box>
-      {isLoading && <Loading />}
-      {ret_dt}
-    </Box>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Box>
+        {isLoading && <Loading />}
+        {ret_dt}
+      </Box>
+    </LocalizationProvider>
   );
 };

@@ -10,6 +10,7 @@ interface Props {
   helperText?: ReactNode;
   handleChange: (event: ChangeEvent<HTMLElement | HTMLTextAreaElement>) => void;
   handleBlur?: (event: ChangeEvent<HTMLElement | HTMLTextAreaElement>) => void;
+  value: string;
 }
 
 const Input: FC<Props> = ({
@@ -21,6 +22,7 @@ const Input: FC<Props> = ({
   helperText,
   handleChange,
   handleBlur,
+  value,
 }) => {
   return (
     <TextField
@@ -32,6 +34,7 @@ const Input: FC<Props> = ({
       required={required}
       size="small"
       label={label}
+      value={value}
       onChange={handleChange}
       onBlur={handleBlur}
       inputProps={inputprops}

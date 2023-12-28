@@ -1,82 +1,85 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
-import { TransitionProps } from "@mui/material/transitions";
-import {
-  Divider,
-  FormControl,
-  FormGroup,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  TextField,
-  Typography
-} from "@mui/material";
-import { AntSwitch } from "../../../assets/icons/icons";
-
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+import React, { useState, FormEvent } from "react";
+import { useForm } from "../../../hooks/useForm";
+import { openModal, closeModal } from "../../../utils/functions";
+import Input from "../../../_shared/Input/Input";
+import Modal from "../../../_shared/Modal/Modal";
+import ButtonLink from "../../../_shared/ButtonLink";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { Stack, TextField } from "@mui/material";
 
 export default function SetDevChildPovs() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const {
+    values,
+    handleChange,
+    handleSelectChange,
+    errors,
+    isValidInput,
+    isValid,
+    resetForm,
+  } = useForm("setPovs");
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("submited...", values);
+    isValid && resetForm();
   };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <React.Fragment>
-      <Button
-        variant="text"
-        onClick={handleClickOpen}
-        sx={{ fontSize: "12px", mt: "12px", textAlign: "left", p: "2px" }}
-      >
-        Поверочный интервал
-      </Button>
-
-      <Dialog
+    <>
+      <ButtonLink
+        value="Поверочный интервал"
+        onClick={() => openModal(setOpen)}
+      />
+      <Modal
         open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        PaperProps={{
-          sx: {
-            width: "100%",
-            maxHeight: "100%"
-          }
-        }}
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+        onClose={() => closeModal(setOpen)}
+        title="Установить поверочный интервал"
+        handleSubmit={handleSubmit}
+        isValid={isValid}
+        className="setPovs"
       >
-        <DialogTitle>{"Установить поверочный интервал"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Установить поверочный интервал
-          </DialogContentText>
-        </DialogContent>
-        <Divider />
-        <DialogActions>
-          <Button onClick={handleClose} sx={{ color: "red" }}>
-            Закрыть
-          </Button>
-          <Button onClick={handleClose}>Сохранить</Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+        <Stack direction="row" spacing={2}>
+          {/* <DateTimePicker
+            views={["year", "month", "day"]}
+            label="Controlled picker"
+            onChange={(e) => console.log(e)}
+          /> */}
+          <TextField
+            name="setPovs_in"
+            size="small"
+            type="datetime-local"
+            sx={{ mr: "16px", fontSize: "14px", mb: "8px" }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={"setPovs_in" in values ? String(values.setPovs_in) : ""}
+            onChange={handleChange}
+            required
+            error={
+              "setPovs_in" in isValidInput && Boolean(isValidInput.setPovs_in)
+            }
+            helperText={"setPovs_in" in errors ? String(errors.setPovs_in) : ""}
+          />
+          <TextField
+            name="setPovs_out"
+            size="small"
+            type="datetime-local"
+            sx={{ mr: "16px", fontSize: "14px", mb: "8px" }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={"setPovs_out" in values ? String(values.setPovs_out) : ""}
+            onChange={handleChange}
+            required
+            error={
+              "setPovs_out" in isValidInput && Boolean(isValidInput.setPovs_out)
+            }
+            helperText={
+              "setPovs_out" in errors ? String(errors.setPovs_out) : ""
+            }
+          />
+        </Stack>
+      </Modal>
+    </>
   );
 }

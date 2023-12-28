@@ -1,14 +1,5 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
-import { TransitionProps } from "@mui/material/transitions";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import {
-  Divider,
   FormControl,
   FormGroup,
   InputLabel,
@@ -19,202 +10,220 @@ import {
   Typography,
 } from "@mui/material";
 import { AntSwitch } from "../../../assets/icons/icons";
+import { openModal, closeModal } from "../../../utils/functions";
+import { useForm } from "../../../hooks/useForm";
+import Input from "../../../_shared/Input/Input";
+import Modal from "../../../_shared/Modal/Modal";
+import ButtonLink from "../../../_shared/ButtonLink";
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+const inputTextProps = {
+  style: { fontSize: 12 },
+};
+
+const inputNumberProps = {
+  style: { fontSize: 12 },
+  type: "number",
+  inputMode: "decimal",
+  step: 0.000001,
+};
+
+const inputSensorProps = {
+  style: { fontSize: 12 },
+  type: "number",
+  inputMode: "decimal",
+  step: 0.1,
+};
 
 export default function ChangeDevChild() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  // const [values, setValues] = useState({});
+  // const [errors, setErrors] = useState({});
+  // const [isValid, setIsValid] = useState(false);
+  // const [isValidInput, setIsValidInput] = useState({});
+  const {
+    values,
+    handleChange,
+    handleSelectChange,
+    errors,
+    isValidInput,
+    isValid,
+    resetForm,
+  } = useForm("editDev");
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleChange = (
+  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  // ) => {
+  //   const target = e.target;
+  //   const name = target.name;
+  //   const value = target.value;
+  //   const form = target.closest("form");
+  //   if (target instanceof HTMLInputElement && target.type === "checkbox") {
+  //     setValues({ ...values, [name]: target.checked });
+  //   } else {
+  //     setValues({ ...values, [name]: value });
+  //   }
 
-  const handleClose = () => {
-    setOpen(false);
+  //   setErrors({ ...errors, [name]: target.validationMessage });
+  //   setIsValid(form ? form.checkValidity() : false);
+  // };
+
+  // const handleBlur = (
+  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  // ) => {
+  //   const target = e.target;
+  //   const name = target.name;
+  //   target.validationMessage
+  //     ? setIsValidInput({ ...isValidInput, [name]: true })
+  //     : setIsValidInput({ ...isValidInput, [name]: false });
+  // };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Submitted...", values);
+    isValid && resetForm();
+    isValid && closeModal(setOpen);
   };
 
   return (
     <React.Fragment>
-      <Button
-        variant="text"
-        onClick={handleClickOpen}
-        sx={{ fontSize: "12px", mt: "12px", textAlign: "left", p: "2px" }}
-      >
-        Редактировать
-      </Button>
-
-      <Dialog
+      <ButtonLink
+        value="Редактировать устройство"
+        onClick={() => openModal(setOpen)}
+      ></ButtonLink>
+      <Modal
         open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        PaperProps={{
-          sx: {
-            width: "100%",
-            maxHeight: "100%",
-          },
-        }}
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+        onClose={() => closeModal(setOpen)}
+        title="Редактировать устройство"
+        handleSubmit={handleSubmit}
+        isValid={isValid}
+        className="editDev"
       >
-        <DialogTitle>{"Редактировать устройство"}</DialogTitle>
-        <DialogContent>
-          {/* С компонентом DialogContentText падают ошибки в консоли, временно закомментировано}
-          {/* <DialogContentText id="alert-dialog-slide-description"> */}
-          <TextField
-            sx={{ mt: "14px" }}
-            inputProps={{ style: { fontSize: 12 } }}
-            InputLabelProps={{ style: { fontSize: 12 } }}
-            // error={APP_STORAGE.devs.getNumberError()}
-            // helperText={APP_STORAGE.devs.getNumberError_mess()}
-            variant="outlined"
-            fullWidth
-            required
-            label="Номер устройства"
-            autoComplete="Номер устройства"
-            autoFocus
-            size="small"
-            // onChange={e => {
-            //   APP_STORAGE.devs.setNumber(e.target.value);
-            // }}
-            //value={APP_STORAGE.devs.getNumber()}
-          />
+        <Input
+          name="editDev_number"
+          label="Номер устройства"
+          inputprops={inputTextProps}
+          value={
+            "editDev_number" in values ? String(values.editDev_number) : ""
+          }
+          handleChange={handleChange}
+          isError={
+            "editDev_number" in isValidInput &&
+            Boolean(isValidInput.editDev_number)
+          }
+          helperText={
+            "editDev_number" in errors ? String(errors.editDev_number) : ""
+          }
+        />
 
-          <TextField
-            sx={{ mt: "14px" }}
-            inputProps={{ style: { fontSize: 12 } }}
-            InputLabelProps={{ style: { fontSize: 12 } }}
-            // error={APP_STORAGE.devs.getNumberError()}
-            // helperText={APP_STORAGE.devs.getNumberError_mess()}
-            variant="outlined"
-            fullWidth
-            required
-            label="Название устройства"
-            autoComplete="Название устройства"
-            autoFocus
-            size="small"
-            // onChange={e => {
-            //   APP_STORAGE.devs.setNumber(e.target.value);
-            // }}
-            //value={APP_STORAGE.devs.getNumber()}
-          />
+        <Input
+          name="editDev_name"
+          label="Название устройства"
+          inputprops={inputTextProps}
+          value={"editDev_name" in values ? String(values.editDev_name) : ""}
+          handleChange={handleChange}
+          isError={
+            "editDev_name" in isValidInput && Boolean(isValidInput.editDev_name)
+          }
+          helperText={
+            "editDev_name" in errors ? String(errors.editDev_name) : ""
+          }
+        />
 
-          <TextField
-            sx={{ mt: "14px" }}
-            inputProps={{ style: { fontSize: 12 } }}
-            InputLabelProps={{ style: { fontSize: 12 } }}
-            // error={APP_STORAGE.devs.getNumberError()}
-            // helperText={APP_STORAGE.devs.getNumberError_mess()}
-            variant="outlined"
-            fullWidth
-            required
-            label="Долгота"
-            autoComplete="Долгота"
-            autoFocus
-            size="small"
-            // onChange={e => {
-            //   APP_STORAGE.devs.setNumber(e.target.value);
-            // }}
-            //value={APP_STORAGE.devs.getNumber()}
-          />
+        <Input
+          name="editDev_latitude"
+          label="Широта"
+          inputprops={inputNumberProps}
+          value={
+            "editDev_latitude" in values ? String(values.editDev_latitude) : ""
+          }
+          handleChange={handleChange}
+          isError={
+            "editDev_latitude" in isValidInput &&
+            Boolean(isValidInput.editDev_latitude)
+          }
+          helperText={
+            "editDev_latitude" in errors ? String(errors.editDev_latitude) : ""
+          }
+        />
+        <Input
+          name="editDev_longitude"
+          label="Долгота"
+          inputprops={inputNumberProps}
+          value={
+            "editDev_longitude" in values
+              ? String(values.editDev_longitude)
+              : ""
+          }
+          handleChange={handleChange}
+          helperText={
+            "editDev_longitude" in errors
+              ? String(errors.editDev_longitude)
+              : ""
+          }
+          isError={
+            "editDev_longitude" in isValidInput &&
+            Boolean(isValidInput.editDev_longitude)
+          }
+        />
 
-          <TextField
-            sx={{ mt: "14px" }}
-            inputProps={{ style: { fontSize: 12 } }}
-            InputLabelProps={{ style: { fontSize: 12 } }}
-            // error={APP_STORAGE.devs.getNumberError()}
-            // helperText={APP_STORAGE.devs.getNumberError_mess()}
-            variant="outlined"
-            fullWidth
-            required
-            label="Широта"
-            autoComplete="Широта"
-            autoFocus
-            size="small"
-            // onChange={e => {
-            //   APP_STORAGE.devs.setNumber(e.target.value);
-            // }}
-            //value={APP_STORAGE.devs.getNumber()}
-          />
+        <TextField
+          sx={{ mt: "14px" }}
+          inputProps={{ style: { fontSize: 12 } }}
+          InputLabelProps={{ style: { fontSize: 12 } }}
+          variant="outlined"
+          fullWidth
+          label="Информация"
+          size="small"
+          multiline
+          minRows={4}
+          maxRows={6}
+          name="editDev_info"
+          value={"editDev_info" in values ? String(values.editDev_info) : ""}
+          onChange={handleChange}
+          error={
+            "editDev_info" in isValidInput && Boolean(isValidInput.editDev_info)
+          }
+          helperText={
+            "editDev_info" in errors ? String(errors.editDev_info) : ""
+          }
+        />
 
-          <TextField
-            sx={{ mt: "14px" }}
-            inputProps={{ style: { fontSize: 12 } }}
-            InputLabelProps={{ style: { fontSize: 12 } }}
-            // error={APP_STORAGE.devs.getNumberError()}
-            // helperText={APP_STORAGE.devs.getNumberError_mess()}
-            variant="outlined"
-            fullWidth
-            required
-            label="Информация"
-            autoComplete="Информация"
-            autoFocus
-            size="small"
-            // onChange={e => {
-            //   APP_STORAGE.devs.setNumber(e.target.value);
-            // }}
-            //value={APP_STORAGE.devs.getNumber()}
-          />
+        <FormGroup sx={{ mt: "12px" }}>
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Typography sx={{ ml: "12px", fontSize: "12px", color: "#266bf1" }}>
+              Заблокировать -{" "}
+            </Typography>
+            <AntSwitch name="editDev_block" onChange={handleChange} />
+          </Stack>
+        </FormGroup>
 
-          <FormGroup sx={{ mt: "12px" }}>
-            <Stack direction="row" spacing={1} alignItems="center">
-              <Typography
-                sx={{ ml: "12px", fontSize: "12px", color: "#266bf1" }}
-              >
-                Заблокировать -{" "}
-              </Typography>
-              <AntSwitch
-              // checked={APP_STORAGE.devs.getCheckboxEd()}
-              // onChange={editing => {
-              //   this.ChekedForEdit(editing);
-              // }}
-              />
-            </Stack>
-          </FormGroup>
+        <FormControl fullWidth size="small" sx={{ mt: "14px" }}>
+          <InputLabel className="org" sx={{ fontSize: "12px" }}>
+            Период сессии
+          </InputLabel>
 
-          <FormControl fullWidth size="small" sx={{ mt: "14px" }}>
-            <InputLabel className="org" sx={{ fontSize: "12px" }}>
-              Период сессии
-            </InputLabel>
-
-            <Select
-              // value={APP_STORAGE.devs.getPeriodSess()}
-              sx={{ fontSize: "12px" }}
-              label="Период сессии"
-              // onChange={e => {
-              //   this.SelectedPeriodSess(e.target.value);
-              // }}
-            >
-              <MenuItem key="4_sess" sx={{ fontSize: "12px" }} value="1">
-                Один раз в день
-              </MenuItem>
-              <MenuItem key="3_sess" sx={{ fontSize: "12px" }} value="7">
-                Один раз в неделю
-              </MenuItem>
-              <MenuItem key="2_sess" sx={{ fontSize: "12px" }} value="14">
-                Каждые две недели
-              </MenuItem>
-              <MenuItem key="1_sess" sx={{ fontSize: "12px" }} value="31">
-                Один раз в месяц
-              </MenuItem>
-            </Select>
-          </FormControl>
-          {/* </DialogContentText> */}
-        </DialogContent>
-        <Divider />
-        <DialogActions>
-          <Button onClick={handleClose} sx={{ color: "red" }}>
-            Закрыть
-          </Button>
-          <Button onClick={handleClose}>Сохранить</Button>
-        </DialogActions>
-      </Dialog>
+          <Select
+            sx={{ fontSize: "12px" }}
+            label="Период сессии"
+            name="editDev_sess"
+            value={"editDev_sess" in values ? values.editDev_sess : ""}
+            onChange={handleSelectChange}
+          >
+            <MenuItem key="4_sess" sx={{ fontSize: "12px" }} value="1">
+              Один раз в день
+            </MenuItem>
+            <MenuItem key="3_sess" sx={{ fontSize: "12px" }} value="7">
+              Один раз в неделю
+            </MenuItem>
+            <MenuItem key="2_sess" sx={{ fontSize: "12px" }} value="14">
+              Каждые две недели
+            </MenuItem>
+            <MenuItem key="1_sess" sx={{ fontSize: "12px" }} value="31">
+              Один раз в месяц
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </Modal>
     </React.Fragment>
   );
 }

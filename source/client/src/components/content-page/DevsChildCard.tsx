@@ -10,7 +10,7 @@ import TableSensors from "./TableSensors";
 import { LimeUpIcon } from "../../assets/icons/icons";
 import {
   getDevFirstLastSessions,
-  getDevice
+  getDevice,
 } from "../../store/authStore/DevsGrStore";
 import { TopPanel } from "./TopMenu";
 import { SetPeriodSess } from "./SetPeriodSess";
@@ -31,14 +31,16 @@ export const DevsChildCard = (dgrs: any): React.ReactNode => {
     info: "",
     time: "",
     deleted: false,
-    period_sess: 0
+    period_sess: 0,
   });
 
-  const { id_child } = useAppSelector(state => state.devSelectedReducer);
-  const { code } = useAppSelector(state => state.userReducer);
-  const { top_menu } = useAppSelector(state => state.devSelectedReducer);
+  const { id_child } = useAppSelector((state) => state.devSelectedReducer);
+  const { code } = useAppSelector((state) => state.userReducer);
+  const { top_menu } = useAppSelector((state) => state.devSelectedReducer);
 
   let devs = dgrs.props;
+  console.log("devs=>", devs);
+  console.log("dgrs=>", dgrs);
   let parent: React.ReactNode[] = new Array();
   for (var ii in devs) {
     let dgr: TDevsGroup = devs[ii];
@@ -70,7 +72,7 @@ export const DevsChildCard = (dgrs: any): React.ReactNode => {
                 width: "100%",
                 display: "flex",
                 height: "100%",
-                flexWrap: "wrap"
+                flexWrap: "wrap",
               }}
             >
               <Box
@@ -81,7 +83,7 @@ export const DevsChildCard = (dgrs: any): React.ReactNode => {
                   textAlign: "left",
                   p: "4px",
                   mt: "14px",
-                  maxHeight: "100px"
+                  maxHeight: "100px",
                 }}
               >
                 <Typography
