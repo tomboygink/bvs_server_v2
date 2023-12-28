@@ -9,7 +9,7 @@ const initialState: IApiResponse = {
   data: [] /* строки из запроса */,
   code: "" /* дополнительный код ответа */,
   isLoading: false,
-  isAuth: false
+  isAuth: false,
 };
 
 const initState = DEVICE;
@@ -33,8 +33,8 @@ export const DevsGrSlice = createSlice({
     getDevsFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export default DevsGrSlice.reducer;

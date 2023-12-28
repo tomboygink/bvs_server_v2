@@ -6,22 +6,23 @@ import chartReducer from "./reducers/DevsChartSlice";
 import DevSessionReduces from "./reducers/DevSession";
 // import { userAPI } from "../services/UserService";
 import { curryGetDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
-
+import { devsAPI } from "./services/DevsApi";
 const rootReducer = combineReducers({
   userReducer,
   devsReducer,
   devSelectedReducer,
   chartReducer,
-  DevSessionReduces
+  DevSessionReduces,
+  [devsAPI.reducerPath]: devsAPI.reducer,
 
   // [userAPI.reducerPath]: userAPI.reducer
 });
 
 export const setupStore = () => {
   return configureStore({
-    reducer: rootReducer
-    //   middleware: getDefaultMiddleware =>
-    //     getDefaultMiddleware().concat(userAPI.middleware)
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(devsAPI.middleware),
   });
 };
 

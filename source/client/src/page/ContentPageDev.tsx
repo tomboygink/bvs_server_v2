@@ -46,7 +46,8 @@ export const ContentPageDev = () => {
         </Typography>
 
         <Box sx={{ pt: "14px", width: "100%" }}>
-          <DevsCard props={...devs_g.childs} />
+          {/* <DevsCard props={...devs_g.childs} /> */}
+        <DevsCard props={{...devs_g.childs}} />
         </Box>
       </Box>
     );

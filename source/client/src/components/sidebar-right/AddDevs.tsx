@@ -11,7 +11,7 @@ import { EditIcon, ExelIcon, SchemeIcon } from "../../assets/icons/icons";
 export const AddDevs = () => {
   const dispatch = useAppDispatch();
 
-  const { isLoading, data } = useAppSelector(state => state.devsReducer);
+  const { isLoading, data } = useAppSelector((state) => state.devsReducer);
 
   return (
     <Box
@@ -20,7 +20,7 @@ export const AddDevs = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        mr: "14px"
+        mr: "14px",
       }}
     >
       <Box>
@@ -41,7 +41,7 @@ export const AddDevs = () => {
             pl: "18px",
             borderLeft: "2px solid #318CE7",
             color: "#318CE7",
-            fontWeight: "bold"
+            fontWeight: "bold",
           }}
         >
           Добавить устройство
@@ -58,7 +58,7 @@ export const AddDevs = () => {
           mb: "12px",
           color: "#808080",
           width: "85%",
-          borderColor: "#808080"
+          borderColor: "#808080",
         }}
       />
       <Box
@@ -69,7 +69,7 @@ export const AddDevs = () => {
           background: "#F7FBFF",
           display: "flex",
           justifyItems: "center",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <ExelIcon />
@@ -78,7 +78,7 @@ export const AddDevs = () => {
             fontSize: "14px",
             textAlign: "left",
             p: "2px",
-            color: "#0D80D8"
+            color: "#0D80D8",
           }}
         >
           Импортировать список устройств
@@ -94,7 +94,7 @@ export const AddDevs = () => {
           display: "flex",
           justifyItems: "center",
           alignItems: "center",
-          mt: "15px"
+          mt: "15px",
         }}
       >
         <SchemeIcon />
@@ -103,7 +103,7 @@ export const AddDevs = () => {
             fontSize: "14px",
             textAlign: "left",
             p: "2px",
-            color: "#0D80D8"
+            color: "#0D80D8",
           }}
         >
           Загрузить схему расположения

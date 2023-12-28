@@ -13,15 +13,23 @@ import { AddDevsChild } from "../components/sidebar-right/AddDevsChild";
 import { ContentPageDevChild } from "./ContentPageDevChild";
 import { ContentPageDev } from "./ContentPageDev";
 import { Typography } from "@mui/material";
+// import { devsAPI } from "../store/services/DevsApi";
 
 function AppPage() {
   const dispatch = useAppDispatch();
-  const { code, data } = useAppSelector(state => state.userReducer);
-  const { isLoading } = useAppSelector(state => state.devsReducer);
-  const { isActive } = useAppSelector(state => state.devSelectedReducer);
+  const { code, data } = useAppSelector((state) => state.userReducer);
+  const { isLoading } = useAppSelector((state) => state.devsReducer);
+  const { isActive } = useAppSelector((state) => state.devSelectedReducer);
 
-  const data_devs = useAppSelector(state => state.devsReducer.data);
+  const data_devs = useAppSelector((state) => state.devsReducer.data);
+  // const { data: devs_api } = devsAPI.useFetchAllDevsQuery("");
+
+  // console.log("devs_api=>", devs_api);
+  // console.log("data_devs=>", data_devs);
+  // console.log(Array.isArray(data_devs));
+
   let devs: any = data_devs;
+  // let devs: any = devs_api;
   let devs_g;
 
   const users_w = true;
@@ -43,7 +51,8 @@ function AppPage() {
             <div className="wrapper">
               <div className="row">
                 <aside className="col-3 sidebar-left">
-                  <DevsGroupTree props={...devs_g.childs} />
+                  {/* <DevsGroupTree props={...devs_g.childs} /> */}
+                  <DevsGroupTree props={{ ...devs_g.childs }} />
                 </aside>
                 <div className="col-8 content-page">
                   {isActive === "_dev_" && <ContentPageDev />}
@@ -52,6 +61,7 @@ function AppPage() {
                     <Typography> Ничего не выбрано</Typography>
                   )}
                 </div>
+                {/* <AddDevs /> */}
                 <aside className="col-1 sidebar-right">
                   <AddDevsChild />
                 </aside>
@@ -61,6 +71,8 @@ function AppPage() {
         </main>
       </Box>
     );
+  } else {
+    return <Loading />;
   }
 }
 

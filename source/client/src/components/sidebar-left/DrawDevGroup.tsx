@@ -50,7 +50,7 @@ export const DrawDevGroup = (dgrs: any): React.ReactNode => {
               color: "#434D5B",
               borderLeft: "1px solid #c1c1c1",
               fontSize: "14px",
-              background: "#FDFDFE"
+              background: "#FDFDFE",
             }}
           >
             {childs}

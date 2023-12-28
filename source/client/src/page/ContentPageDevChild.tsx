@@ -48,7 +48,8 @@ export const ContentPageDevChild = () => {
         <TopPanel />
 
         <Box sx={{ display: "flex", pt: "14px", width: "100%" }}>
-          <DevsChildCard props={...devs_g.childs} />
+          <DevsChildCard props={{ ...devs_g.childs }} />
+          {/* <DevsChildCard props={...devs_g.childs} /> */}
           <ChartSession />
         </Box>
         <Box sx={{ height: "400px", width: "100%" }}>
