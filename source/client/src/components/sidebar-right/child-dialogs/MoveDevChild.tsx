@@ -54,34 +54,15 @@ export default function MoveDevChild() {
         isValid
         className="moveDev"
       >
-        <DatePicker label="Controlled picker" />
+        <TextField
+          size="small"
+          sx={{ mr: "16px", fontSize: "14px", mb: "8px" }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          required
+        />
       </Modal>
-
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        PaperProps={{
-          sx: {
-            width: "100%",
-            maxHeight: "100%",
-          },
-        }}
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>{"Переместить"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description"></DialogContentText>
-        </DialogContent>
-        <Divider />
-        <DialogActions>
-          <Button onClick={handleClose} sx={{ color: "red" }}>
-            Закрыть
-          </Button>
-          <Button onClick={handleClose}>Сохранить</Button>
-        </DialogActions>
-      </Dialog>
     </React.Fragment>
   );
 }
